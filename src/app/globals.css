@@ -265,6 +265,49 @@ a:hover {
   gap: 14px;
 }
 
+.timeline-wrapper {
+  position: relative;
+}
+
+.timeline-rail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.timeline-nav-btn {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #2563eb;
+  background: #ffffff;
+  color: #1d4ed8;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+  flex: 0 0 auto;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.timeline-arrow-icon {
+  line-height: 1;
+  font-size: 0.95rem;
+}
+
+.timeline-nav-btn:hover {
+  transform: scale(1.04);
+  background: #dbeafe;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.3);
+}
+
+.timeline-nav-btn.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1);
+}
+
 .timeline {
   position: relative;
   display: flex;
@@ -276,6 +319,11 @@ a:hover {
   border: 0;
   border-radius: 0;
   box-shadow: none;
+  scrollbar-width: none;
+}
+
+.timeline::-webkit-scrollbar {
+  display: none;
 }
 
 .timeline-item {
@@ -332,6 +380,58 @@ a:hover {
 
 .grid {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.skills-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.skills-panel {
+  border-radius: 16px;
+  padding: 16px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.98), rgba(239, 246, 255, 0.9));
+  border: 1px solid rgba(147, 197, 253, 0.45);
+  box-shadow: 0 14px 24px rgba(37, 99, 235, 0.1);
+}
+
+.skills-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.skills-count {
+  min-width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.82rem;
+}
+
+.skills-chip-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skills-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid #bfdbfe;
+  color: #1e3a8a;
+  font-weight: 600;
+  font-size: 0.85rem;
 }
 
 .card {
@@ -463,5 +563,10 @@ a:hover {
 
   .floating-social-link {
     padding: 0 12px;
+  }
+
+  .timeline-rail {
+    gap: 8px;
+    align-items: flex-start;
   }
 }

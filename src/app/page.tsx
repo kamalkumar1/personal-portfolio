@@ -1,4 +1,5 @@
 import { Header } from "@/components/Header";
+import { ExperienceTimeline } from "@/components/ExperienceTimeline";
 import { Hero } from "@/components/Hero";
 import { OpenSourceSection } from "@/components/OpenSourceSection";
 import { Section } from "@/components/Section";
@@ -31,25 +32,7 @@ export default function Home() {
       <Hero profile={profile} />
 
       <Section id="experience" title="Experience">
-        <div className="timeline">
-          {experiences.map((item) => (
-            <article key={`${item.company}-${item.title}`} className="timeline-item">
-              <div className="timeline-dot" />
-              <div className="timeline-content">
-                <p className="timeline-date">{item.dateRange}</p>
-                <h4>{item.title}</h4>
-                <p className="muted">
-                  {item.company} | {item.location}
-                </p>
-                <ul>
-                  {item.highlights.map((highlight) => (
-                    <li key={highlight}>{highlight}</li>
-                  ))}
-                </ul>
-              </div>
-            </article>
-          ))}
-        </div>
+        <ExperienceTimeline experiences={experiences} />
       </Section>
 
       <OpenSourceSection groups={openSourceGroups} />
@@ -68,15 +51,20 @@ export default function Home() {
       </Section>
 
       <Section id="skills" title="Technical Skills">
-        <div className="grid">
+        <div className="skills-showcase">
           {skills.map((group) => (
-            <article key={group.title} className="card">
-              <h4>{group.title}</h4>
-              <ul>
+            <article key={group.title} className="skills-panel">
+              <div className="skills-panel-head">
+                <h4>{group.title}</h4>
+                <span className="skills-count">{group.items.length}</span>
+              </div>
+              <div className="skills-chip-wrap">
                 {group.items.map((skill) => (
-                  <li key={skill}>{skill}</li>
+                  <span key={skill} className="skills-chip">
+                    {skill}
+                  </span>
                 ))}
-              </ul>
+              </div>
             </article>
           ))}
         </div>

@@ -4,6 +4,8 @@ export const openSourcePlatformGroups: OpenSourcePlatformGroup[] = [
   {
     id: "native-ios",
     label: "Native iOS",
+    order: 1,
+    visible: true,
     description: "iOS-first packages and reusable components for Apple ecosystem development.",
     items: [
       {
@@ -11,8 +13,8 @@ export const openSourcePlatformGroups: OpenSourcePlatformGroup[] = [
         type: "GitHub",
         description:
           "Reusable UI and device utility patterns for production-grade Native iOS app development.",
-        link: "https://github.com/",
-        stats: "Contribution Showcase",
+        link: "https://www.nuget.org/profiles/kamal15",
+        stats: "NuGet Profile",
         tags: ["Swift", "UIKit", "Architecture"],
       },
     ],
@@ -20,6 +22,8 @@ export const openSourcePlatformGroups: OpenSourcePlatformGroup[] = [
   {
     id: "dotnet-maui",
     label: ".NET MAUI",
+    order: 2,
+    visible: true,
     description: "Cross-platform components and NuGet packages focused on productivity.",
     items: [
       {
@@ -51,6 +55,8 @@ export const openSourcePlatformGroups: OpenSourcePlatformGroup[] = [
   {
     id: "kotlin-multiplatform",
     label: "Kotlin Multiplatform",
+    order: 3,
+    visible: true,
     description:
       "Future-ready section for Kotlin Multiplatform contributions and shared business modules.",
     items: [

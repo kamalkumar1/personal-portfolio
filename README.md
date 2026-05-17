@@ -1,51 +1,67 @@
 # Personal Portfolio (Next.js Static)
 
-Static personal portfolio website built with Next.js (App Router) and TypeScript.
+Static personal portfolio built with **Next.js (App Router) + TypeScript**, following a SOLID-friendly architecture with separated content modules.
 
-## Highlights
+## Stack
 
-- Static export ready (`output: "export"`).
-- SOLID-friendly architecture (`domain`, `content`, `services`, `components`).
-- No hardcoded display strings in UI components.
-- Open Source section is extendable and grouped platform-wise.
+- **Framework:** Next.js 16 (static export)
+- **Language:** TypeScript (strict)
+- **Hosting (recommended):** [Vercel](https://vercel.com) — see [docs/HOSTING.md](docs/HOSTING.md)
+- **Alternative:** Cloudflare Pages or GitHub Pages (workflow included)
 
-## Structure
+## Architecture
 
-- `src/domain`: interfaces and models
-- `src/content`: all content strings/data
-- `src/services`: content access/adapters
-- `src/components`: reusable UI components
-- `src/app`: page composition and routing
+| Layer | Path | Purpose |
+|-------|------|---------|
+| Domain | `src/domain/` | TypeScript interfaces |
+| Content | `src/content/` | All strings and resume data |
+| Services | `src/services/` | Content access (DIP) |
+| Components | `src/components/` | Reusable UI |
+| App | `src/app/` | Page composition |
+| Constants | `src/constants/` | Site config, navigation |
 
-## Run
+## Sections
 
-1. Install Node.js (LTS).
-2. Install dependencies:
+- About / Hero
+- Core Competencies
+- Experience (horizontal timeline)
+- Open Source (platform-wise accordion: Native iOS, .NET MAUI, Kotlin Multiplatform)
+- Projects
+- Technical Skills
+- Certifications
+- Awards & Achievements
+- Contact (email, phone, LinkedIn, Stack Overflow)
+
+## Commands
 
 ```bash
 npm install
+npm run dev          # http://localhost:3000
+npm run build        # outputs static site to out/
+npm run lint
 ```
-
-3. Start dev server:
-
-```bash
-npm run dev
-```
-
-4. Build static output:
-
-```bash
-npm run build
-```
-
-Generated static files will be in `out/`.
 
 ## Profile image
 
-Place your image at:
+Place your photo at:
 
-`public/images/profile/profile-kamal.webp`
+`public/images/profile/profile-kamal.png`
 
-Then adjust metadata in:
+Update metadata in `src/content/profile.ts`.
 
-`src/content/profile.ts`
+## Deploy
+
+### Vercel (recommended)
+
+1. Push repo to GitHub
+2. Import project on Vercel
+3. Deploy (uses `vercel.json`)
+
+### GitHub Pages
+
+1. Enable Pages → Source: GitHub Actions
+2. Push to `main` — workflow `.github/workflows/deploy.yml` publishes `out/`
+
+## Edit content
+
+Update files under `src/content/` only — no need to change component logic for text updates.

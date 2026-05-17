@@ -1,4 +1,5 @@
-import Image from "next/image";
+import { HeroMobileVisuals } from "@/components/HeroMobileVisuals";
+import { HeroTypewriter } from "@/components/HeroTypewriter";
 import type { Profile } from "@/domain/models";
 
 interface HeroProps {
@@ -7,37 +8,44 @@ interface HeroProps {
 
 export function Hero({ profile }: HeroProps) {
   return (
-    <section id="about" className="hero">
-      <div className="hero-image-wrap">
-        <Image
-          src={profile.imagePath}
-          alt={profile.imageAlt}
-          width={420}
-          height={420}
-          className="hero-image"
-          priority
-        />
-      </div>
-      <div className="hero-content">
-        <h1>{profile.fullName}</h1>
-        <h2>{profile.role}</h2>
-        <p className="hero-headline">{profile.headline}</p>
-        <p>{profile.summary}</p>
-        <div className="hero-actions">
-          <a href="#experience" className="hero-action">
-            Experience
-          </a>
-          <a href="#open-source" className="hero-action">
-            Open Source
-          </a>
-          <a href="#projects" className="hero-action">
-            Projects
-          </a>
-          <a href="#contact" className="hero-action">
-            Contact
-          </a>
+    <section id="about" className="hero-banner" aria-label="Introduction">
+      <div
+        className="hero-banner-bg"
+        style={{ backgroundImage: `url(${profile.heroBackgroundPath})` }}
+        aria-hidden="true"
+      />
+      <div className="hero-banner-overlay" aria-hidden="true" />
+
+      <div className="hero-banner-inner">
+        <div className="hero-banner-copy">
+          <h1 className="hero-banner-title">
+            Hi! I&apos;m {profile.firstName}.
+          </h1>
+          <p className="hero-banner-subtitle">
+            {profile.role} located in {profile.location}.
+          </p>
+          <HeroTypewriter phrases={profile.typewriterPhrases} />
         </div>
+        <HeroMobileVisuals />
       </div>
+
+      <a href="#competencies" className="hero-scroll" aria-label="Scroll to content">
+        <span className="hero-scroll-icon" aria-hidden="true">
+          ⌄
+        </span>
+      </a>
+
+      <svg
+        className="hero-wave"
+        viewBox="0 0 1440 120"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M0,72 C320,120 480,24 720,60 C960,96 1120,108 1440,48 L1440,120 L0,120 Z"
+          fill="#f8fbff"
+        />
+      </svg>
     </section>
   );
 }

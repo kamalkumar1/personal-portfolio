@@ -6,6 +6,7 @@ export interface NavItem {
 
 export interface Profile {
   fullName: string;
+  firstName: string;
   role: string;
   headline: string;
   summary: string;
@@ -13,8 +14,20 @@ export interface Profile {
   email: string;
   phone: string;
   linkedinUrl: string;
+  stackOverflowUrl: string;
   imagePath: string;
   imageAlt: string;
+  heroBackgroundPath: string;
+  typewriterPhrases: string[];
+}
+
+export interface CompetencyItem {
+  label: string;
+}
+
+export interface AwardItem {
+  title: string;
+  description: string;
 }
 
 export interface ExperienceItem {
@@ -45,6 +58,8 @@ export interface OpenSourcePlatformGroup {
   id: string;
   label: string;
   description: string;
+  order: number;
+  visible: boolean;
   items: OpenSourceItem[];
 }
 

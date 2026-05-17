@@ -14,8 +14,27 @@ const bodyFont = Manrope({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.siteUrl),
   title: siteConfig.title,
   description: siteConfig.description,
+  keywords: siteConfig.keywords,
+  authors: [{ name: siteConfig.author }],
+  openGraph: {
+    title: siteConfig.title,
+    description: siteConfig.description,
+    url: siteConfig.siteUrl,
+    siteName: siteConfig.title,
+    images: [{ url: siteConfig.ogImagePath, width: 420, height: 420, alt: siteConfig.author }],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [siteConfig.ogImagePath],
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({

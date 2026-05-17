@@ -1,4 +1,6 @@
+import { awardsContent } from "@/content/awards";
 import { certificationsContent } from "@/content/certifications";
+import { competenciesContent } from "@/content/competencies";
 import { experienceContent } from "@/content/experience";
 import { openSourcePlatformGroups } from "@/content/openSource";
 import { profileContent } from "@/content/profile";
@@ -11,5 +13,10 @@ export const contentService = {
   getProjects: () => projectsContent,
   getSkills: () => skillGroupsContent,
   getCertifications: () => certificationsContent,
-  getOpenSourceByPlatform: () => openSourcePlatformGroups,
+  getCompetencies: () => competenciesContent,
+  getAwards: () => awardsContent,
+  getOpenSourceByPlatform: () =>
+    openSourcePlatformGroups
+      .filter((group) => group.visible)
+      .sort((a, b) => a.order - b.order),
 };

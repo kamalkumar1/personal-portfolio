@@ -1,12 +1,12 @@
 import type { CSSProperties, ReactNode } from "react";
 import {
+  AndroidIcon,
   AndroidStudioIcon,
   ApplePlatformIcon,
+  CSharpIcon,
   KotlinIcon,
   MauiIcon,
   SwiftIcon,
-  SwiftUIIcon,
-  XamarinIcon,
   XcodeIcon,
 } from "@/components/HeroPlatformIcons";
 
@@ -18,14 +18,19 @@ interface OrbitIcon {
 }
 
 const orbitIcons: OrbitIcon[] = [
-  { id: "xcode", name: "Xcode", icon: <XcodeIcon />, accent: "#147adb" },
+  { id: "apple", name: "iOS", icon: <ApplePlatformIcon />, accent: "#a2aaad" },
   { id: "swift", name: "Swift", icon: <SwiftIcon />, accent: "#f05138" },
-  { id: "apple", name: "Apple Platform", icon: <ApplePlatformIcon />, accent: "#a2aaad" },
-  { id: "swiftui", name: "SwiftUI", icon: <SwiftUIIcon />, accent: "#0a84ff" },
-  { id: "android-studio", name: "Android Studio", icon: <AndroidStudioIcon />, accent: "#3ddc84" },
+  { id: "xcode", name: "Xcode", icon: <XcodeIcon />, accent: "#147adb" },
+  { id: "android", name: "Android", icon: <AndroidIcon />, accent: "#3ddc84" },
   { id: "kotlin", name: "Kotlin", icon: <KotlinIcon />, accent: "#7f52ff" },
+  {
+    id: "android-studio",
+    name: "Android Studio",
+    icon: <AndroidStudioIcon />,
+    accent: "#4285f4",
+  },
   { id: "maui", name: ".NET MAUI", icon: <MauiIcon />, accent: "#512bd4" },
-  { id: "xamarin", name: "Xamarin", icon: <XamarinIcon />, accent: "#3498db" },
+  { id: "csharp", name: "C#", icon: <CSharpIcon />, accent: "#68217a" },
 ];
 
 const totalIcons = orbitIcons.length;
@@ -41,7 +46,7 @@ export function HeroMobileVisuals() {
         {orbitIcons.map((item, index) => (
           <div
             key={item.id}
-            className="hero-orbit-item"
+            className={`hero-orbit-item${item.id === "apple" ? " hero-orbit-item--apple" : ""}`}
             style={
               {
                 "--orbit-index": index,

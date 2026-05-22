@@ -101,29 +101,75 @@ export default function Home() {
         <AwardsSection awards={awards} />
 
         <Section id="contact" title="Hire Me">
-          <article className="card">
-            <p>
-              <strong>Email:</strong> {profile.email}
+          <div className="hireme-shell">
+            <h4 className="hireme-headline">Let's Build Your Next App</h4>
+            <p className="hireme-subtitle">
+              Available for mobile architecture, lead development, and stable
+              production delivery.
             </p>
-            <p>
-              <strong>Phone:</strong> {profile.phone}
-            </p>
-            <p>
-              <strong>Location:</strong> {profile.location}
-            </p>
-            <p>
-              <strong>LinkedIn:</strong>{" "}
-              <a href={profile.linkedinUrl} target="_blank" rel="noreferrer">
-                View LinkedIn profile
+
+            <article className="hireme-card">
+              <p className="hireme-item">
+                <span className="hireme-item-icon" aria-hidden="true">
+                  ✉
+                </span>
+                <span className="hireme-item-body">
+                  <span className="hireme-label">Email</span>
+                  <a href={`mailto:${profile.email}`} className="hireme-value-link">
+                    {profile.email}
+                  </a>
+                </span>
+              </p>
+
+              <p className="hireme-item">
+                <span className="hireme-item-icon" aria-hidden="true">
+                  ☎
+                </span>
+                <span className="hireme-item-body">
+                  <span className="hireme-label">Phone</span>
+                  <a
+                    href={`tel:${profile.phone.replace(/\s+/g, "")}`}
+                    className="hireme-value-link"
+                  >
+                    {profile.phone}
+                  </a>
+                </span>
+              </p>
+
+              <p className="hireme-item">
+                <span className="hireme-item-icon" aria-hidden="true">
+                  📍
+                </span>
+                <span className="hireme-item-body">
+                  <span className="hireme-label">Location</span>
+                  <span className="hireme-value">{profile.location}</span>
+                </span>
+              </p>
+
+              <div className="hireme-actions">
+                <a
+                  href={profile.linkedinUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hireme-btn hireme-btn-linkedin"
+                >
+                  View LinkedIn Profile
+                </a>
+                <a
+                  href={profile.stackOverflowUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hireme-btn hireme-btn-stackoverflow"
+                >
+                  View Stack Overflow Profile
+                </a>
+              </div>
+
+              <a href={`mailto:${profile.email}`} className="hireme-btn hireme-btn-email">
+                Send Email
               </a>
-            </p>
-            <p>
-              <strong>Stack Overflow:</strong>{" "}
-              <a href={profile.stackOverflowUrl} target="_blank" rel="noreferrer">
-                View Stack Overflow profile
-              </a>
-            </p>
-          </article>
+            </article>
+          </div>
         </Section>
       </div>
     </main>

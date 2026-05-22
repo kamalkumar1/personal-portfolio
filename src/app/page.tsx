@@ -51,15 +51,47 @@ export default function Home() {
         </Section>
 
         <Section id="projects" title="My Works">
-          <div className="grid">
-            {projects.map((project) => (
-              <article key={project.name} className="card">
-                <h4>{project.name}</h4>
-                <p className="muted">{project.stack}</p>
-                <p>{project.summary}</p>
-                <p>{project.impact}</p>
-              </article>
-            ))}
+          <div className="projects-magazine">
+            <div className="project-secondary-list">
+              {projects.map((project) => (
+                <article key={project.name} className="project-secondary-item">
+                  <div className="project-secondary-main">
+                    <h4>{project.name}</h4>
+                    <p className="project-summary">{project.summary}</p>
+                    <div className="project-tech-wrap">
+                      {project.technologies.map((technology) => (
+                        <span key={technology} className="project-tech-chip">
+                          {technology}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="project-actions">
+                    {project.appStoreUrl && (
+                      <a
+                        href={project.appStoreUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="project-store-btn"
+                      >
+                        App Store
+                      </a>
+                    )}
+                    {project.playStoreUrl && (
+                      <a
+                        href={project.playStoreUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="project-store-btn"
+                      >
+                        Play Store
+                      </a>
+                    )}
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </Section>
 

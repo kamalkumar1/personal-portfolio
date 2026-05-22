@@ -40,9 +40,10 @@ export interface ExperienceItem {
 
 export interface ProjectItem {
   name: string;
-  stack: string;
   summary: string;
-  impact: string;
+  technologies: string[];
+  appStoreUrl?: string;
+  playStoreUrl?: string;
 }
 
 export interface OpenSourceItem {

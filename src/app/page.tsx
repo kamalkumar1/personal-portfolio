@@ -178,29 +178,6 @@ export default function Home() {
         </Section>
       </div>
 
-      <div className="mobile-hireme-bar" role="region" aria-label="Mobile Hire Me quick actions">
-        <p className="mobile-hireme-title">Hire Me</p>
-        <p className="mobile-hireme-meta">11+ years • Mobile Architect</p>
-        <div className="mobile-hireme-actions">
-          <a href={`mailto:${profile.email}`} className="mobile-hireme-btn mobile-hireme-btn-primary">
-            Send Email
-          </a>
-          <a
-            href={profile.linkedinUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="mobile-hireme-btn mobile-hireme-btn-secondary"
-          >
-            LinkedIn
-          </a>
-          <a
-            href={`tel:${profile.phone.replace(/\s+/g, "")}`}
-            className="mobile-hireme-btn mobile-hireme-btn-secondary"
-          >
-            Call
-          </a>
-        </div>
-      </div>
     </main>
   );
 }

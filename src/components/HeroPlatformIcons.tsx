@@ -16,34 +16,48 @@ export function XcodeIcon({ className }: IconProps) {
 }
 
 export function ApplePlatformIcon({ className }: IconProps) {
+  const classes = className ? `${className} hero-platform-app-icon` : "hero-platform-app-icon";
+
   return (
-    <svg className={className} viewBox="0 0 64 64" aria-hidden="true">
-      <defs>
-        <linearGradient id="apple-bg" x1="4" y1="4" x2="60" y2="60" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#3a3a3c" />
-          <stop offset="100%" stopColor="#1c1c1e" />
-        </linearGradient>
-      </defs>
-      <rect x="4" y="4" width="56" height="56" rx="13" fill="url(#apple-bg)" />
-      <path
-        fill="#ffffff"
-        d="M39.2 33.8c-.1 2.4 2.1 4.6 2.9 5.5-.5.7-2.4 3.3-4.8 3.3-1.3 0-2.2-.8-3.8-.8s-2.7.8-4 .8c-2.4 0-4.6-2.5-5.9-4.9-3.2-5.6-5.6-15.8-2.3-22.7 1.6-3.1 4.6-5.1 7.8-5.1 1.5 0 2.9.9 3.9.9 1 0 2.7-1.1 4.6-1 1.9.1 4.6 1 6.4 3.8-5.6 3-4.7 10.8.3 13.3zm-5.8-24.3c.8-1 1.4-2.4 1.2-3.8-1.2.1-2.6.8-3.5 1.8-.8.9-1.5 2.4-1.3 3.8 1.4.1 2.8-.7 3.6-1.8z"
-      />
+    <img
+      className={classes}
+      src="/images/icons/apple-ios.png"
+      alt=""
+      width={64}
+      height={64}
+      draggable={false}
+    />
+  );
+}
+
+const ANDROID_ROBOT_PATH =
+  "M18.4395 5.5586c-.675 1.1664-1.352 2.3318-2.0274 3.498-.0366-.0155-.0742-.0286-.1113-.043-1.8249-.6957-3.484-.8-4.42-.787-1.8551.0185-3.3544.4643-4.2597.8203-.084-.1494-1.7526-3.021-2.0215-3.4864a1.1451 1.1451 0 0 0-.1406-.1914c-.3312-.364-.9054-.4859-1.379-.203-.475.282-.7136.9361-.3886 1.5019 1.9466 3.3696-.0966-.2158 1.9473 3.3593.0172.031-.4946.2642-1.3926 1.0177C2.8987 12.176.452 14.772 0 18.9902h24c-.119-1.1108-.3686-2.099-.7461-3.0683-.7438-1.9118-1.8435-3.2928-2.7402-4.1836a12.1048 12.1048 0 0 0-2.1309-1.6875c.6594-1.122 1.312-2.2559 1.9649-3.3848.2077-.3615.1886-.7956-.0079-1.1191a1.1001 1.1001 0 0 0-.8515-.5332c-.5225-.0536-.9392.3128-1.0488.5449zm-.0391 8.461c.3944.5926.324 1.3306-.1563 1.6503-.4799.3197-1.188.0985-1.582-.4941-.3944-.5927-.324-1.3307.1563-1.6504.4727-.315 1.1812-.1086 1.582.4941zM7.207 13.5273c.4803.3197.5506 1.0577.1563 1.6504-.394.5926-1.1038.8138-1.584.4941-.48-.3197-.5503-1.0577-.1563-1.6504.4008-.6021 1.1087-.8106 1.584-.4941z";
+
+export function AndroidIcon({ className }: IconProps) {
+  const classes = className ? `${className} hero-platform-app-icon` : "hero-platform-app-icon";
+
+  return (
+    <svg className={classes} viewBox="0 0 64 64" aria-hidden="true">
+      <rect x="0" y="0" width="64" height="64" rx="14" fill="#ffffff" />
+      <g transform="translate(8 8) scale(2)">
+        <path fill="#3ddc84" d={ANDROID_ROBOT_PATH} />
+      </g>
     </svg>
   );
 }
 
 export function AndroidStudioIcon({ className }: IconProps) {
+  const classes = className ? `${className} hero-platform-app-icon` : "hero-platform-app-icon";
+
   return (
-    <svg className={className} viewBox="0 0 64 64" aria-hidden="true">
-      <rect x="4" y="4" width="56" height="56" rx="14" fill="#3ddc84" />
-      <path
-        d="M22 26c0-5.5 4.5-10 10-10s10 4.5 10 10v2h-3v-2c0-3.9-3.1-7-7-7s-7 3.1-7 7v2h-3v-2zm-2 6h26v14c0 2.2-1.8 4-4 4H24c-2.2 0-4-1.8-4-4V32zm6 4v6h3v-6h-3zm14 0v6h3v-6h-3z"
-        fill="#1b4332"
-      />
-      <circle cx="27" cy="28" r="1.8" fill="#1b4332" />
-      <circle cx="37" cy="28" r="1.8" fill="#1b4332" />
-    </svg>
+    <img
+      className={classes}
+      src="/images/icons/android-studio.png"
+      alt=""
+      width={64}
+      height={64}
+      draggable={false}
+    />
   );
 }
 
@@ -93,14 +107,57 @@ export function SwiftUIIcon({ className }: IconProps) {
   );
 }
 
-export function MauiIcon({ className }: IconProps) {
+export function CSharpIcon({ className }: IconProps) {
+  const classes = className ? `${className} hero-csharp-icon` : "hero-csharp-icon";
+
   return (
-    <svg className={className} viewBox="0 0 64 64" aria-hidden="true">
-      <rect x="4" y="4" width="56" height="56" rx="14" fill="#512bd4" />
-      <path
-        d="M20 42l12-22 12 22h-6l-2.5-5h-7l-2.5 5H20zm9-11h5l-2.5-5-2.5 5z"
-        fill="#fff"
-      />
+    <img
+      className={classes}
+      src="/images/icons/csharp.png"
+      alt=""
+      width={64}
+      height={64}
+      draggable={false}
+    />
+  );
+}
+
+export function MauiIcon({ className }: IconProps) {
+  const classes = className
+    ? `${className} hero-platform-app-icon hero-maui-hex-icon`
+    : "hero-platform-app-icon hero-maui-hex-icon";
+
+  const hexPoints = "32,5 55,18.5 55,45.5 32,59 9,45.5 9,18.5";
+
+  return (
+    <svg className={classes} viewBox="0 0 64 64" aria-hidden="true">
+      <rect x="0" y="0" width="64" height="64" rx="14" fill="#ffffff" />
+      <g transform="translate(32 32) scale(0.9) translate(-32 -32)">
+        <polygon points={hexPoints} fill="#512bd4" stroke="#ffffff" strokeWidth="2" strokeLinejoin="round" />
+        <text
+          x="32"
+          y="27"
+          textAnchor="middle"
+          fill="#ffffff"
+          fontSize="11"
+          fontWeight="700"
+          fontFamily="system-ui, -apple-system, Segoe UI, sans-serif"
+        >
+          .NET
+        </text>
+        <text
+          x="32"
+          y="42"
+          textAnchor="middle"
+          fill="#ffffff"
+          fontSize="10.5"
+          fontWeight="700"
+          fontFamily="system-ui, -apple-system, Segoe UI, sans-serif"
+          letterSpacing="0.04em"
+        >
+          MAUI
+        </text>
+      </g>
     </svg>
   );
 }

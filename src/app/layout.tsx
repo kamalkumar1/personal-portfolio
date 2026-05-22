@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Manrope, Sora } from "next/font/google";
 import { siteConfig } from "@/constants/site";
 import "./globals.css";
@@ -12,6 +12,12 @@ const bodyFont = Manrope({
   subsets: ["latin"],
   variable: "--font-body",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#1474e4",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),

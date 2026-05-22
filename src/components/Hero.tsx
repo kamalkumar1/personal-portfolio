@@ -17,19 +17,22 @@ export function Hero({ profile }: HeroProps) {
       <div className="hero-banner-overlay" aria-hidden="true" />
 
       <div className="hero-banner-inner">
+        <div className="hero-typewriter-top">
+          <HeroTypewriter phrases={profile.typewriterPhrases} />
+        </div>
         <div className="hero-banner-copy">
           <h1 className="hero-banner-title">
             Hi! I&apos;m {profile.firstName}.
           </h1>
           <p className="hero-banner-subtitle">
-            {profile.role} located in {profile.location}.
+            {profile.role} located in{" "}
+            <span className="hero-location-text">{profile.location}</span>.
           </p>
-          <HeroTypewriter phrases={profile.typewriterPhrases} />
         </div>
-        <HeroMobileVisuals />
+        <HeroMobileVisuals profile={profile} />
       </div>
 
-      <a href="#competencies" className="hero-scroll" aria-label="Scroll to content">
+      <a href="#experience" className="hero-scroll" aria-label="Scroll to content">
         <span className="hero-scroll-icon" aria-hidden="true">
           ⌄
         </span>

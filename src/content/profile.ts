@@ -3,7 +3,7 @@ import type { Profile } from "@/domain/models";
 export const profileContent: Profile = {
   fullName: "Kamal Kumar",
   firstName: "Kamal",
-  role: "Technical Specialist & Senior Mobile Developer",
+  role: "Mobile Architect & Senior Mobile Developer",
   headline:
     "Building scalable mobile applications with Native iOS, Xamarin, and .NET MAUI.",
   summary:
@@ -11,10 +11,9 @@ export const profileContent: Profile = {
   location: "Chennai, Tamil Nadu, India",
   heroBackgroundPath: "/images/hero/hero-background-alt.png",
   typewriterPhrases: [
-    "Native iOS Apps",
-    "Android Development",
-    ".NET MAUI Solutions",
-    "Xamarin Native Apps",
+    "Native iOS Development",
+    "Android Native Development",
+    ".NET MAUI",
     "Kotlin Multiplatform",
   ],
   email: "kamalelango15@gmail.com",

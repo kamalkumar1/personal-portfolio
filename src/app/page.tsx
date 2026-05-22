@@ -1,6 +1,6 @@
 import { AwardsSection } from "@/components/AwardsSection";
 import { CompetenciesSection } from "@/components/CompetenciesSection";
-import { Header } from "@/components/Header";
+import { StickyHeader } from "@/components/StickyHeader";
 import { ExperienceTimeline } from "@/components/ExperienceTimeline";
 import { Hero } from "@/components/Hero";
 import { OpenSourceSection } from "@/components/OpenSourceSection";
@@ -28,26 +28,29 @@ export default function Home() {
           aria-label="LinkedIn profile"
           title="Click to see LinkedIn profile"
         >
-          <span className="floating-social-icon">in</span>
-          <span className="floating-social-text">LinkedIn</span>
+          <img
+            className="floating-social-icon-img"
+            src="/images/icons/linkedin.png"
+            alt=""
+            width={48}
+            height={48}
+            draggable={false}
+          />
         </a>
       </div>
 
+      <StickyHeader />
+
       <div className="hero-shell">
-        <Header variant="hero" />
         <Hero profile={profile} />
       </div>
 
       <div className="page-body container">
-        <CompetenciesSection competencies={competencies} />
-
         <Section id="experience" title="Experience">
           <ExperienceTimeline experiences={experiences} />
         </Section>
 
-        <OpenSourceSection groups={openSourceGroups} />
-
-        <Section id="projects" title="Projects">
+        <Section id="projects" title="My Works">
           <div className="grid">
             {projects.map((project) => (
               <article key={project.name} className="card">
@@ -59,6 +62,10 @@ export default function Home() {
             ))}
           </div>
         </Section>
+
+        <CompetenciesSection competencies={competencies} />
+
+        <OpenSourceSection groups={openSourceGroups} />
 
         <Section id="skills" title="Technical Skills">
           <div className="skills-showcase">
@@ -93,7 +100,7 @@ export default function Home() {
 
         <AwardsSection awards={awards} />
 
-        <Section id="contact" title="Contact">
+        <Section id="contact" title="Hire Me">
           <article className="card">
             <p>
               <strong>Email:</strong> {profile.email}

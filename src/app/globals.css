@@ -1031,6 +1031,71 @@ a:hover {
   font-size: 0.85rem;
 }
 
+.certifications-showcase {
+  display: grid;
+  gap: 12px;
+}
+
+.certification-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 12px;
+  padding: 8px 0;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.certification-item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(37, 99, 235, 0.35), rgba(37, 99, 235, 0.04));
+}
+
+.certification-item:hover {
+  transform: translateX(4px);
+  filter: drop-shadow(0 8px 16px rgba(37, 99, 235, 0.14));
+}
+
+.certification-icon {
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  color: #1d4ed8;
+  background: radial-gradient(circle, rgba(191, 219, 254, 0.8), rgba(219, 234, 254, 0.2));
+  box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.35);
+  font-size: 0.68rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+
+.certification-item:hover .certification-icon {
+  transform: scale(1.08) rotate(8deg);
+  color: #1e40af;
+  box-shadow: 0 0 0 4px rgba(147, 197, 253, 0.45);
+}
+
+.certification-body h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.certification-body p {
+  margin: 2px 0 0;
+  font-size: 0.87rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #2563eb;
+}
+
 .competencies-grid {
   display: flex;
   flex-wrap: wrap;
@@ -1629,6 +1694,26 @@ a:hover {
 
   .awards-timeline-content {
     padding-left: 12px;
+  }
+
+  .certification-item {
+    grid-template-columns: 24px minmax(0, 1fr);
+    column-gap: 10px;
+  }
+
+  .certification-icon {
+    width: 18px;
+    height: 18px;
+    font-size: 0.58rem;
+    box-shadow: 0 0 0 2px rgba(191, 219, 254, 0.35);
+  }
+
+  .certification-body h4 {
+    font-size: 0.95rem;
+  }
+
+  .certification-body p {
+    font-size: 0.75rem;
   }
 
   .card-top {

@@ -88,11 +88,16 @@ export default function Home() {
         </Section>
 
         <Section id="certifications" title="Certifications">
-          <div className="grid">
+          <div className="certifications-showcase">
             {certifications.map((certification) => (
-              <article key={certification.name} className="card">
-                <h4>{certification.name}</h4>
-                <p className="muted">{certification.issuer}</p>
+              <article key={certification.name} className="certification-item">
+                <span className="certification-icon" aria-hidden="true">
+                  ◆
+                </span>
+                <div className="certification-body">
+                  <h4>{certification.name}</h4>
+                  <p>{certification.issuer}</p>
+                </div>
               </article>
             ))}
           </div>

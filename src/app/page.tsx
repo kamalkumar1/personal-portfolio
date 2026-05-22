@@ -16,6 +16,12 @@ export default function Home() {
   const competencies = contentService.getCompetencies();
   const awards = contentService.getAwards();
   const openSourceGroups = contentService.getOpenSourceByPlatform();
+  const skillGroupBadges: Record<string, string> = {
+    Platforms: "PL",
+    "Languages & Frameworks": "LF",
+    "Architecture & Delivery": "AD",
+  };
+  const coreSkills = ["iOS", "Android", "Cross-Platform Mobile - .NET MAUI", "Kotlin Multiplatform (KMP)"];
 
   return (
     <main>
@@ -100,22 +106,40 @@ export default function Home() {
         <OpenSourceSection groups={openSourceGroups} />
 
         <Section id="skills" title="Technical Skills">
-          <div className="skills-showcase">
-            {skills.map((group) => (
-              <article key={group.title} className="skills-panel">
-                <div className="skills-panel-head">
-                  <h4>{group.title}</h4>
-                  <span className="skills-count">{group.items.length}</span>
-                </div>
-                <div className="skills-chip-wrap">
-                  {group.items.map((skill) => (
-                    <span key={skill} className="skills-chip">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </article>
-            ))}
+          <div className="skills-market">
+            <article className="skills-highlight">
+              <p className="skills-kicker">Core Stack</p>
+              <div className="skills-core-wrap">
+                {coreSkills.map((skill) => (
+                  <span key={skill} className="skills-core-chip">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </article>
+
+            <div className="skills-showcase">
+              {skills.map((group) => (
+                <article key={group.title} className="skills-panel">
+                  <div className="skills-panel-head">
+                    <div className="skills-title-wrap">
+                      <span className="skills-badge" aria-hidden="true">
+                        {skillGroupBadges[group.title] ?? "SK"}
+                      </span>
+                      <h4>{group.title}</h4>
+                    </div>
+                    <span className="skills-count">{group.items.length}</span>
+                  </div>
+                  <div className="skills-chip-wrap">
+                    {group.items.map((skill) => (
+                      <span key={skill} className="skills-chip">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </Section>
 

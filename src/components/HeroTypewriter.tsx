@@ -1,70 +1,60 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 interface HeroTypewriterProps {
   phrases: string[];
   prefix?: string;
+}
+
+function getTechClassName(phrase: string): string {
+  const normalized = phrase.toLowerCase();
+  if (normalized.includes("ios") || normalized.includes("apple")) {
+    return "hero-spec-ios";
+  }
+  if (normalized.includes("android")) {
+    return "hero-spec-android";
+  }
+  if (normalized.includes(".net") || normalized.includes("maui")) {
+    return "hero-spec-dotnet";
+  }
+  if (normalized.includes("kotlin") || normalized.includes("kmp")) {
+    return "hero-spec-kotlin";
+  }
+  return "hero-spec-default";
 }
 
 export function HeroTypewriter({
   phrases,
   prefix = "Specialized in ",
 }: HeroTypewriterProps) {
-  const fallback = phrases[0] ?? "";
-  const [mounted, setMounted] = useState(false);
-  const [phraseIndex, setPhraseIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(fallback.length);
-  const [isDeleting, setIsDeleting] = useState(false);
+  const tickerPhrases = phrases.filter(Boolean);
+  if (tickerPhrases.length === 0) {
+    return null;
+  }
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!mounted || phrases.length === 0) {
-      return;
-    }
-
-    const currentPhrase = phrases[phraseIndex] ?? "";
-    const isComplete = charIndex === currentPhrase.length;
-    const isEmpty = charIndex === 0;
-
-    let delay = isDeleting ? 45 : 85;
-    if (isComplete && !isDeleting) {
-      delay = 1800;
-    } else if (isEmpty && isDeleting) {
-      delay = 500;
-    }
-
-    const timer = window.setTimeout(() => {
-      if (!isDeleting && isComplete) {
-        setIsDeleting(true);
-        return;
-      }
-
-      if (isDeleting && isEmpty) {
-        setIsDeleting(false);
-        setPhraseIndex((index) => (index + 1) % phrases.length);
-        return;
-      }
-
-      setCharIndex((index) => index + (isDeleting ? -1 : 1));
-    }, delay);
-
-    return () => window.clearTimeout(timer);
-  }, [mounted, phrases, phraseIndex, charIndex, isDeleting]);
-
-  const displayText = mounted
-    ? (phrases[phraseIndex] ?? "").slice(0, charIndex)
-    : fallback;
+  const renderTickerItems = (ariaHidden = false) =>
+    tickerPhrases.map((phrase, index) => (
+      <span
+        key={`${phrase}-${index}-${ariaHidden ? "ghost" : "live"}`}
+        className="hero-ticker-chunk"
+        aria-hidden={ariaHidden}
+      >
+        <span className={`hero-spec ${getTechClassName(phrase)}`}>{phrase}</span>
+        <span className="hero-spec-separator" aria-hidden="true">
+          |
+        </span>
+      </span>
+    ));
 
   return (
-    <p className="hero-typewriter" aria-live="polite">
-      {prefix}
-      <strong>{displayText}</strong>
-      <span className="hero-typewriter-cursor" aria-hidden="true">
-        |
+    <p className="hero-typewriter">
+      <span className="hero-typewriter-prefix">{prefix}</span>
+      <span className="hero-ticker">
+        <span className="hero-ticker-track">
+          <strong className="hero-ticker-item">{renderTickerItems()}</strong>
+          <strong className="hero-ticker-item" aria-hidden="true">
+            {renderTickerItems(true)}
+          </strong>
+        </span>
       </span>
     </p>
   );

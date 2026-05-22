@@ -1,3 +1,5 @@
+import { ProfileImage } from "@/components/ProfileImage";
+import type { Profile } from "@/domain/models";
 import type { CSSProperties, ReactNode } from "react";
 import {
   AndroidIcon,
@@ -35,7 +37,13 @@ const orbitIcons: OrbitIcon[] = [
 
 const totalIcons = orbitIcons.length;
 
-export function HeroMobileVisuals() {
+const spinningOrbitIconIds = new Set(["apple", "android", "maui"]);
+
+interface HeroMobileVisualsProps {
+  profile: Profile;
+}
+
+export function HeroMobileVisuals({ profile }: HeroMobileVisualsProps) {
   return (
     <div className="hero-orbit-wrap" aria-label="Mobile development platforms">
       <div className="hero-orbit-glow" aria-hidden="true" />
@@ -46,7 +54,7 @@ export function HeroMobileVisuals() {
         {orbitIcons.map((item, index) => (
           <div
             key={item.id}
-            className={`hero-orbit-item${item.id === "apple" ? " hero-orbit-item--apple" : ""}`}
+            className={`hero-orbit-item${spinningOrbitIconIds.has(item.id) ? " hero-orbit-item--spin" : ""}`}
             style={
               {
                 "--orbit-index": index,
@@ -62,8 +70,8 @@ export function HeroMobileVisuals() {
         ))}
       </div>
 
-      <div className="hero-orbit-core" aria-hidden="true">
-        <span className="hero-orbit-core-dot" />
+      <div className="hero-orbit-core">
+        <ProfileImage profile={profile} className="hero-orbit-profile" size={112} />
       </div>
     </div>
   );

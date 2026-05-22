@@ -2,14 +2,13 @@ import type { ExperienceItem } from "@/domain/models";
 
 export const experienceContent: ExperienceItem[] = [
   {
-    company: "Wipro",
-    title: "Technical Specialist / Senior Developer",
-    dateRange: "Jun 2022 - Present",
+    company: "UPS Technology Centre",
+    title: "Senior Developer",
+    dateRange: "Jan 2026 - Present",
     location: "Chennai, India",
     highlights: [
       "Lead mobile development team and manage architecture decisions.",
       "Deliver Native iOS and .NET MAUI solutions with reusable components.",
-      "Handle support operations, incident resolution, and monthly production releases.",
     ],
   },
   {

@@ -19,21 +19,22 @@ export const siteConfig = {
 
 export const navItems: NavItem[] = [
   { id: "about", label: "About", href: "#about" },
-  { id: "competencies", label: "Competencies", href: "#competencies" },
   { id: "experience", label: "Experience", href: "#experience" },
-  { id: "opensource", label: "Open Source", href: "#open-source" },
   { id: "projects", label: "Projects", href: "#projects" },
+  { id: "competencies", label: "Competencies", href: "#competencies" },
+  { id: "opensource", label: "Open Source", href: "#open-source" },
   { id: "skills", label: "Skills", href: "#skills" },
   { id: "certifications", label: "Certifications", href: "#certifications" },
   { id: "awards", label: "Awards", href: "#awards" },
-  { id: "contact", label: "Contact", href: "#contact" },
+  { id: "contact", label: "Hire Me", href: "#contact" },
 ];
 
 export const heroNavItems: NavItem[] = [
   { id: "about", label: "Home", href: "#about" },
-  { id: "competencies", label: "About", href: "#competencies" },
   { id: "experience", label: "Experience", href: "#experience" },
-  { id: "projects", label: "Works", href: "#projects" },
+  { id: "projects", label: "My Works", href: "#projects" },
+  { id: "competencies", label: "About", href: "#competencies" },
   { id: "open-source", label: "Open Source", href: "#open-source" },
-  { id: "contact", label: "Contact", href: "#contact" },
+  { id: "certifications", label: "Certifications", href: "#certifications" },
+  { id: "contact", label: "Hire Me", href: "#contact" },
 ];

@@ -1,15 +1,29 @@
+import { forwardRef } from "react";
 import { heroNavItems, navItems } from "@/constants/site";
 
 interface HeaderProps {
   variant?: "default" | "hero";
+  scrolled?: boolean;
 }
 
-export function Header({ variant = "default" }: HeaderProps) {
+export const Header = forwardRef<HTMLElement, HeaderProps>(function Header(
+  { variant = "default", scrolled = false },
+  ref,
+) {
   const isHero = variant === "hero";
   const items = isHero ? heroNavItems : navItems;
 
+  const headerClass = [
+    "header",
+    "header-sticky",
+    isHero ? "header-hero" : "",
+    isHero && scrolled ? "header-scrolled" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <header className={isHero ? "header header-hero" : "header"}>
+    <header ref={ref} className={headerClass}>
       <a href="#about" className={isHero ? "hero-logo" : "brand"}>
         {isHero ? (
           "KAMAL"
@@ -25,15 +39,10 @@ export function Header({ variant = "default" }: HeaderProps) {
       </a>
 
       <nav aria-label="Primary">
-        <ul className={isHero ? "nav-list nav-list-hero" : "nav-list"}>
-          {items.map((item, index) => (
+        <ul className={isHero ? "nav-list-hero" : "nav-list"}>
+          {items.map((item) => (
             <li key={item.id}>
-              <a
-                href={item.href}
-                className={`nav-link ${isHero ? "nav-link-hero" : ""} ${
-                  isHero && index === 0 ? "nav-link-hero-active" : ""
-                }`}
-              >
+              <a href={item.href} className={`nav-link ${isHero ? "nav-link-hero" : ""}`}>
                 {isHero ? item.label.toUpperCase() : item.label}
               </a>
             </li>
@@ -48,4 +57,4 @@ export function Header({ variant = "default" }: HeaderProps) {
       ) : null}
     </header>
   );
-}
+});

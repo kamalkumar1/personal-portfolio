@@ -123,37 +123,41 @@ export function CSharpIcon({ className }: IconProps) {
 }
 
 export function MauiIcon({ className }: IconProps) {
-  const classes = className ? `${className} hero-maui-hex-icon` : "hero-maui-hex-icon";
+  const classes = className
+    ? `${className} hero-platform-app-icon hero-maui-hex-icon`
+    : "hero-platform-app-icon hero-maui-hex-icon";
+
+  const hexPoints = "32,5 55,18.5 55,45.5 32,59 9,45.5 9,18.5";
 
   return (
     <svg className={classes} viewBox="0 0 64 64" aria-hidden="true">
-      <polygon
-        points="32,5 55,18.5 55,45.5 32,59 9,45.5 9,18.5"
-        fill="#512bd4"
-      />
-      <text
-        x="32"
-        y="27"
-        textAnchor="middle"
-        fill="#ffffff"
-        fontSize="11"
-        fontWeight="700"
-        fontFamily="system-ui, -apple-system, Segoe UI, sans-serif"
-      >
-        .NET
-      </text>
-      <text
-        x="32"
-        y="42"
-        textAnchor="middle"
-        fill="#ffffff"
-        fontSize="10.5"
-        fontWeight="700"
-        fontFamily="system-ui, -apple-system, Segoe UI, sans-serif"
-        letterSpacing="0.04em"
-      >
-        MAUI
-      </text>
+      <rect x="0" y="0" width="64" height="64" rx="14" fill="#ffffff" />
+      <g transform="translate(32 32) scale(0.9) translate(-32 -32)">
+        <polygon points={hexPoints} fill="#512bd4" stroke="#ffffff" strokeWidth="2" strokeLinejoin="round" />
+        <text
+          x="32"
+          y="27"
+          textAnchor="middle"
+          fill="#ffffff"
+          fontSize="11"
+          fontWeight="700"
+          fontFamily="system-ui, -apple-system, Segoe UI, sans-serif"
+        >
+          .NET
+        </text>
+        <text
+          x="32"
+          y="42"
+          textAnchor="middle"
+          fill="#ffffff"
+          fontSize="10.5"
+          fontWeight="700"
+          fontFamily="system-ui, -apple-system, Segoe UI, sans-serif"
+          letterSpacing="0.04em"
+        >
+          MAUI
+        </text>
+      </g>
     </svg>
   );
 }

@@ -34,7 +34,7 @@ export const heroNavItems: NavItem[] = [
   { id: "about", label: "Home", href: "#about" },
   { id: "experience", label: "Experience", href: "#experience" },
   { id: "projects", label: "My Works", href: "#projects" },
-  { id: "competencies", label: "About", href: "#competencies" },
+  { id: "skills-menu", label: "MySkill", href: "#skills" },
   { id: "open-source", label: "Open Source", href: "#open-source" },
   { id: "certifications", label: "Certifications", href: "#certifications" },
   { id: "contact", label: "Hire Me", href: "#contact" },

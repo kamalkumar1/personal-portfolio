@@ -1,5 +1,4 @@
 import { AwardsSection } from "@/components/AwardsSection";
-import { CompetenciesSection } from "@/components/CompetenciesSection";
 import { StickyHeader } from "@/components/StickyHeader";
 import { ExperienceTimeline } from "@/components/ExperienceTimeline";
 import { Hero } from "@/components/Hero";
@@ -101,8 +100,6 @@ export default function Home() {
           </div>
         </Section>
 
-        <CompetenciesSection competencies={competencies} />
-
         <OpenSourceSection groups={openSourceGroups} />
 
         <Section id="skills" title="Technical Skills">
@@ -139,6 +136,17 @@ export default function Home() {
                   </div>
                 </article>
               ))}
+            </div>
+
+            <div id="competencies" className="skills-subheading">
+              <h4>Core Competencies</h4>
+              <div className="competencies-grid">
+                {competencies.map((item) => (
+                  <span key={item.label} className="competency-chip">
+                    {item.label}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </Section>

@@ -71,6 +71,8 @@ a:hover {
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   z-index: 30;
+  display: grid;
+  gap: 10px;
 }
 
 .floating-social-link {
@@ -100,6 +102,21 @@ a:hover {
   transform: translateY(-2px);
   box-shadow: 0 18px 28px rgba(0, 119, 181, 0.38);
   text-decoration: none;
+}
+
+.floating-share-btn {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #f8fafc;
+  background: #0f172a;
+  box-shadow: 0 14px 24px rgba(15, 23, 42, 0.28);
+}
+
+.floating-share-btn:hover {
+  background: #1e293b;
+  box-shadow: 0 18px 28px rgba(15, 23, 42, 0.34);
 }
 
 .header {
@@ -1713,6 +1730,20 @@ a:hover {
   background: rgba(37, 99, 235, 0.08);
 }
 
+.hireme-btn-share {
+  margin-top: 10px;
+  width: auto;
+  min-width: 180px;
+  justify-self: center;
+  border-color: rgba(148, 163, 184, 0.65);
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+.hireme-btn-share:hover {
+  background: #1e293b;
+}
+
 .muted {
   color: #555;
 }
@@ -2260,6 +2291,10 @@ a:hover {
   }
 
   .hireme-btn-email {
+    width: 100%;
+  }
+
+  .hireme-btn-share {
     width: 100%;
   }
 

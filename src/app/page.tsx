@@ -1,4 +1,5 @@
 import { AwardsSection } from "@/components/AwardsSection";
+import { SharePortfolioButton } from "@/components/SharePortfolioButton";
 import { StickyHeader } from "@/components/StickyHeader";
 import { ExperienceTimeline } from "@/components/ExperienceTimeline";
 import { Hero } from "@/components/Hero";
@@ -43,6 +44,7 @@ export default function Home() {
             draggable={false}
           />
         </a>
+        <SharePortfolioButton compact />
       </div>
 
       <StickyHeader />

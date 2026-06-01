@@ -444,6 +444,15 @@ a:hover {
   color: rgba(255, 255, 255, 0.9);
 }
 
+.hero-availability {
+  margin: 0;
+  max-width: 760px;
+  font-size: clamp(0.82rem, 1.2vw, 0.95rem);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: rgba(191, 219, 254, 0.96);
+}
+
 .hero-location-text {
   color: #93c5fd;
   font-weight: 700;
@@ -1295,6 +1304,55 @@ a:hover {
   color: #2563eb;
 }
 
+.blog-list {
+  display: grid;
+  gap: 12px;
+}
+
+.blog-item {
+  padding: 14px 0;
+  border-bottom: 1px dashed rgba(148, 163, 184, 0.55);
+}
+
+.blog-item:last-child {
+  border-bottom: 0;
+}
+
+.blog-item h4 {
+  margin: 0 0 8px;
+}
+
+.blog-item-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.blog-row-number {
+  min-width: 34px;
+  height: 26px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.blog-item-head h4 {
+  margin: 0;
+}
+
+.blog-item p {
+  margin: 0 0 10px;
+  color: #334155;
+  line-height: 1.55;
+}
+
 .competencies-grid {
   display: flex;
   flex-wrap: wrap;
@@ -1669,6 +1727,163 @@ a:hover {
   font-size: 1.2rem;
 }
 
+.open-source-groups {
+  display: grid;
+  gap: 16px;
+}
+
+.open-source-group {
+  border-radius: 16px;
+  padding: 14px 16px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.98), rgba(239, 246, 255, 0.9));
+  border: 1px solid rgba(147, 197, 253, 0.3);
+}
+
+.open-source-group-head h4 {
+  margin: 0 0 6px;
+  text-align: center;
+}
+
+.open-source-group-head p {
+  margin: 0 0 12px;
+  color: #334155;
+  text-align: center;
+}
+
+.open-source-group-summary-center {
+  text-align: center;
+}
+
+.open-source-inline-link {
+  font-weight: 700;
+}
+
+.open-source-accordion-trigger {
+  display: none;
+}
+
+.open-source-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.open-source-item {
+  padding: 12px 0;
+  border-bottom: 1px dashed rgba(148, 163, 184, 0.55);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.open-source-item:last-child {
+  border-bottom: 0;
+}
+
+.open-source-item:hover {
+  transform: translateX(3px);
+  background: rgba(219, 234, 254, 0.35);
+}
+
+.open-source-item-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.open-source-type {
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.open-source-item-description {
+  margin: 10px 0 6px;
+  color: #334155;
+  line-height: 1.55;
+}
+
+.open-source-description-wrap .is-collapsed {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.open-source-description-wrap {
+  margin: 0;
+  position: relative;
+}
+
+.open-source-more-btn {
+  margin-top: 4px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #1d4ed8;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.open-source-more-btn:hover {
+  text-decoration: underline;
+}
+
+.open-source-description-wrap.has-overflow.is-collapsed p {
+  padding-right: 78px;
+}
+
+.open-source-description-wrap.has-overflow.is-collapsed .open-source-more-btn {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding-left: 10px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), #ffffff 45%);
+}
+
+.open-source-description-wrap.is-expanded .open-source-more-btn {
+  position: static;
+  background: transparent;
+  padding-left: 0;
+}
+
+.open-source-item-stat {
+  margin: 0 0 8px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #1d4ed8;
+}
+
+.open-source-feature-text {
+  margin: 8px 0 10px;
+  color: #334155;
+  line-height: 1.45;
+}
+
+.open-source-link-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid rgba(37, 99, 235, 0.35);
+  background: #ffffff;
+  color: #1d4ed8;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 8px 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.open-source-link-btn:hover {
+  text-decoration: none;
+  transform: translateY(-1px);
+  background: rgba(37, 99, 235, 0.08);
+  box-shadow: 0 8px 14px rgba(37, 99, 235, 0.16);
+}
+
 .accordion-list {
   display: grid;
   gap: 12px;
@@ -1876,6 +2091,11 @@ a:hover {
     line-height: 1.55;
   }
 
+  .hero-availability {
+    font-size: 0.74rem;
+    line-height: 1.5;
+  }
+
   .hero-typewriter {
     font-size: 0.98rem;
     line-height: 1.5;
@@ -2046,6 +2266,43 @@ a:hover {
   .accordion-trigger {
     font-size: 0.95rem;
     padding: 12px 14px;
+  }
+
+  .open-source-group {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .open-source-accordion-trigger {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: #0f172a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 12px 14px;
+  }
+
+  .open-source-accordion-trigger.active {
+    background: linear-gradient(90deg, rgba(191, 219, 254, 0.45), rgba(147, 197, 253, 0.35));
+  }
+
+  .open-source-group-head {
+    display: none;
+  }
+
+  .open-source-group-body {
+    padding: 0 14px 14px;
+  }
+
+  .open-source-group-summary-mobile {
+    margin: 10px 0 12px;
+    color: #334155;
+    text-align: left;
   }
 
   .section h3 {

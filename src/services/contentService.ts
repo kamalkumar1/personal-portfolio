@@ -1,4 +1,5 @@
 import { awardsContent } from "@/content/awards";
+import { blogContent } from "@/content/blog";
 import { certificationsContent } from "@/content/certifications";
 import { competenciesContent } from "@/content/competencies";
 import { experienceContent } from "@/content/experience";
@@ -13,6 +14,7 @@ export const contentService = {
   getProjects: () => projectsContent,
   getSkills: () => skillGroupsContent,
   getCertifications: () => certificationsContent,
+  getBlog: () => blogContent,
   getCompetencies: () => competenciesContent,
   getAwards: () => awardsContent,
   getOpenSourceByPlatform: () =>

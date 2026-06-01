@@ -10,6 +10,7 @@ export default function Home() {
   const profile = contentService.getProfile();
   const experiences = contentService.getExperience();
   const projects = contentService.getProjects();
+  const blogPosts = contentService.getBlog();
   const skills = contentService.getSkills();
   const certifications = contentService.getCertifications();
   const competencies = contentService.getCompetencies();
@@ -102,7 +103,7 @@ export default function Home() {
 
         <OpenSourceSection groups={openSourceGroups} />
 
-        <Section id="skills" title="Technical Skills">
+        <Section id="skills" title="MySkills">
           <div className="skills-market">
             <article className="skills-highlight">
               <p className="skills-kicker">Core Stack</p>
@@ -173,8 +174,9 @@ export default function Home() {
           <div className="hireme-shell">
             <h4 className="hireme-headline">Let's Build Your Next App</h4>
             <p className="hireme-subtitle">
-              Available for mobile architecture, lead development, and stable
-              production delivery.
+              I am currently open to full-time roles, remote opportunities,
+              mobile app training engagements, and part-time consulting
+              assignments.
             </p>
 
             <article className="hireme-card">
@@ -238,6 +240,23 @@ export default function Home() {
                 Send Email
               </a>
             </article>
+          </div>
+        </Section>
+
+        <Section id="blog" title="Blog">
+          <div className="blog-list">
+            {blogPosts.map((post, index) => (
+              <article key={post.url} className="blog-item">
+                <div className="blog-item-head">
+                  <span className="blog-row-number">{String(index + 1).padStart(2, "0")}</span>
+                  <h4>{post.title}</h4>
+                </div>
+                <p>{post.description}</p>
+                <a href={post.url} target="_blank" rel="noreferrer">
+                  Read post
+                </a>
+              </article>
+            ))}
           </div>
         </Section>
       </div>

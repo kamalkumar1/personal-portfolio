@@ -48,11 +48,12 @@ export interface ProjectItem {
 
 export interface OpenSourceItem {
   name: string;
-  type: "NuGet" | "GitHub";
+  type: "NuGet" | "GitHub" | "Swift Package";
   description: string;
   link: string;
   stats: string;
   tags: string[];
+  features?: string[];
 }
 
 export interface OpenSourcePlatformGroup {
@@ -72,4 +73,10 @@ export interface SkillGroup {
 export interface CertificationItem {
   name: string;
   issuer: string;
+}
+
+export interface BlogItem {
+  title: string;
+  url: string;
+  description: string;
 }

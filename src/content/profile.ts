@@ -18,7 +18,7 @@ export const profileContent: Profile = {
   ],
   email: "kamalelango15@gmail.com",
   phone: "+91 9750461689",
-  linkedinUrl: "https://www.linkedin.com/in/kamal-kumar",
+  linkedinUrl: "https://www.linkedin.com/in/kamal-kumar-39450654/",
   stackOverflowUrl: "https://stackoverflow.com/users/kamalkumar",
   imagePath: "/images/profile/profile-kamal.png",
   imageAlt: "Portrait of Kamal Kumar",

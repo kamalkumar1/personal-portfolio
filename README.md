@@ -65,3 +65,8 @@ Update metadata in `src/content/profile.ts`.
 ## Edit content
 
 Update files under `src/content/` only — no need to change component logic for text updates.
+
+## Documentation
+
+- [Hosting guide](docs/HOSTING.md)
+- [Git workflow](docs/GIT_WORKFLOW.md)

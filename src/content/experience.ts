@@ -12,6 +12,17 @@ export const experienceContent: ExperienceItem[] = [
     ],
   },
   {
+    company: "Wipro",
+    title: "Technical Specialist / Senior Developer",
+    dateRange: "Jun 2022 - Oct 2025",
+    location: "Chennai, Tamil Nadu, India",
+    highlights: [
+      "Led development team and built scalable Native iOS and cross-platform apps using Xamarin Native and .NET MAUI with reusable components.",
+      "Managed MobileApp support and monthly App Store/Play Store releases, resolving production issues (incident and Service request) and ensuring stable deployments.",
+      "Collaborated with product owners across 5 countries and QA teams to guarantee application quality and timely delivery.",
+    ],
+  },
+  {
     company: "Data Rooms Sterling Pvt. Ltd.",
     title: "Senior Application Developer",
     dateRange: "Aug 2020 - Apr 2022",

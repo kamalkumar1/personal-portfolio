@@ -7,7 +7,7 @@ Static personal portfolio built with **Next.js (App Router) + TypeScript**, foll
 - **Framework:** Next.js 16 (static export)
 - **Language:** TypeScript (strict)
 - **Hosting (recommended):** [Vercel](https://vercel.com) — see [docs/HOSTING.md](docs/HOSTING.md)
-- **Alternative:** Cloudflare Pages or GitHub Pages (workflow included)
+- **Alternative:** Cloudflare Pages
 
 ## Architecture
 
@@ -56,11 +56,6 @@ Update metadata in `src/content/profile.ts`.
 1. Push repo to GitHub
 2. Import project on Vercel
 3. Deploy (uses `vercel.json`)
-
-### GitHub Pages
-
-1. Enable Pages → Source: GitHub Actions
-2. Push to `main` — workflow `.github/workflows/deploy.yml` publishes `out/`
 
 ## Edit content
 

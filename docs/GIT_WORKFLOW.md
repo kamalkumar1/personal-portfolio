@@ -63,7 +63,8 @@ gh pr create --base main --head feature/<short-task-name> --title "Your PR title
 ### 6) Verify deployment
 
 - Run `npm run build` before merge.
-- After merge to `main`, confirm deployment on your hosting provider (Vercel recommended).
+- After merge to `main`, confirm GitHub Actions deploy succeeds.
+- Verify the site at `https://kamaldev.in` once DNS and HTTPS are active.
 
 ## Release workflow
 

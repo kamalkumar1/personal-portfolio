@@ -28,6 +28,9 @@ export function Hero({ profile }: HeroProps) {
             {profile.role} located in{" "}
             <span className="hero-location-text">{profile.location}</span>.
           </p>
+          <p className="hero-availability">
+            Open to Full-Time | Remote Opportunities | Mobile App Training | Part-Time Consulting
+          </p>
         </div>
         <HeroMobileVisuals profile={profile} />
       </div>

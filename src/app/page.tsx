@@ -1,5 +1,5 @@
 import { AwardsSection } from "@/components/AwardsSection";
-import { CompetenciesSection } from "@/components/CompetenciesSection";
+import { SharePortfolioButton } from "@/components/SharePortfolioButton";
 import { StickyHeader } from "@/components/StickyHeader";
 import { ExperienceTimeline } from "@/components/ExperienceTimeline";
 import { Hero } from "@/components/Hero";
@@ -11,11 +11,18 @@ export default function Home() {
   const profile = contentService.getProfile();
   const experiences = contentService.getExperience();
   const projects = contentService.getProjects();
+  const blogPosts = contentService.getBlog();
   const skills = contentService.getSkills();
   const certifications = contentService.getCertifications();
   const competencies = contentService.getCompetencies();
   const awards = contentService.getAwards();
   const openSourceGroups = contentService.getOpenSourceByPlatform();
+  const skillGroupBadges: Record<string, string> = {
+    Platforms: "PL",
+    "Languages & Frameworks": "LF",
+    "Architecture & Delivery": "AD",
+  };
+  const coreSkills = ["iOS", "Android", "Cross-Platform Mobile - .NET MAUI", "Kotlin Multiplatform (KMP)"];
 
   return (
     <main>
@@ -37,6 +44,7 @@ export default function Home() {
             draggable={false}
           />
         </a>
+        <SharePortfolioButton compact />
       </div>
 
       <StickyHeader />
@@ -51,48 +59,112 @@ export default function Home() {
         </Section>
 
         <Section id="projects" title="My Works">
-          <div className="grid">
-            {projects.map((project) => (
-              <article key={project.name} className="card">
-                <h4>{project.name}</h4>
-                <p className="muted">{project.stack}</p>
-                <p>{project.summary}</p>
-                <p>{project.impact}</p>
-              </article>
-            ))}
+          <div className="projects-magazine">
+            <div className="project-secondary-list">
+              {projects.map((project) => (
+                <article key={project.name} className="project-secondary-item">
+                  <div className="project-secondary-main">
+                    <h4>{project.name}</h4>
+                    <p className="project-summary">{project.summary}</p>
+                    <div className="project-tech-wrap">
+                      {project.technologies.map((technology) => (
+                        <span key={technology} className="project-tech-chip">
+                          {technology}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="project-actions">
+                    {project.appStoreUrl && (
+                      <a
+                        href={project.appStoreUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="project-store-btn"
+                      >
+                        App Store
+                      </a>
+                    )}
+                    {project.playStoreUrl && (
+                      <a
+                        href={project.playStoreUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="project-store-btn"
+                      >
+                        Play Store
+                      </a>
+                    )}
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </Section>
 
-        <CompetenciesSection competencies={competencies} />
-
         <OpenSourceSection groups={openSourceGroups} />
 
-        <Section id="skills" title="Technical Skills">
-          <div className="skills-showcase">
-            {skills.map((group) => (
-              <article key={group.title} className="skills-panel">
-                <div className="skills-panel-head">
-                  <h4>{group.title}</h4>
-                  <span className="skills-count">{group.items.length}</span>
-                </div>
-                <div className="skills-chip-wrap">
-                  {group.items.map((skill) => (
-                    <span key={skill} className="skills-chip">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </article>
-            ))}
+        <Section id="skills" title="MySkills">
+          <div className="skills-market">
+            <article className="skills-highlight">
+              <p className="skills-kicker">Core Stack</p>
+              <div className="skills-core-wrap">
+                {coreSkills.map((skill) => (
+                  <span key={skill} className="skills-core-chip">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </article>
+
+            <div className="skills-showcase">
+              {skills.map((group) => (
+                <article key={group.title} className="skills-panel">
+                  <div className="skills-panel-head">
+                    <div className="skills-title-wrap">
+                      <span className="skills-badge" aria-hidden="true">
+                        {skillGroupBadges[group.title] ?? "SK"}
+                      </span>
+                      <h4>{group.title}</h4>
+                    </div>
+                    <span className="skills-count">{group.items.length}</span>
+                  </div>
+                  <div className="skills-chip-wrap">
+                    {group.items.map((skill) => (
+                      <span key={skill} className="skills-chip">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <div id="competencies" className="skills-subheading">
+              <h4>Core Competencies</h4>
+              <div className="competencies-grid">
+                {competencies.map((item) => (
+                  <span key={item.label} className="competency-chip">
+                    {item.label}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </Section>
 
         <Section id="certifications" title="Certifications">
-          <div className="grid">
+          <div className="certifications-showcase">
             {certifications.map((certification) => (
-              <article key={certification.name} className="card">
-                <h4>{certification.name}</h4>
-                <p className="muted">{certification.issuer}</p>
+              <article key={certification.name} className="certification-item">
+                <span className="certification-icon" aria-hidden="true">
+                  ◆
+                </span>
+                <div className="certification-body">
+                  <h4>{certification.name}</h4>
+                  <p>{certification.issuer}</p>
+                </div>
               </article>
             ))}
           </div>
@@ -101,31 +173,96 @@ export default function Home() {
         <AwardsSection awards={awards} />
 
         <Section id="contact" title="Hire Me">
-          <article className="card">
-            <p>
-              <strong>Email:</strong> {profile.email}
+          <div className="hireme-shell">
+            <h4 className="hireme-headline">Let's Build Your Next App</h4>
+            <p className="hireme-subtitle">
+              I am currently open to full-time roles, remote opportunities,
+              mobile app training engagements, and part-time consulting
+              assignments.
             </p>
-            <p>
-              <strong>Phone:</strong> {profile.phone}
-            </p>
-            <p>
-              <strong>Location:</strong> {profile.location}
-            </p>
-            <p>
-              <strong>LinkedIn:</strong>{" "}
-              <a href={profile.linkedinUrl} target="_blank" rel="noreferrer">
-                View LinkedIn profile
+
+            <article className="hireme-card">
+              <p className="hireme-item">
+                <span className="hireme-item-icon" aria-hidden="true">
+                  ✉
+                </span>
+                <span className="hireme-item-body">
+                  <span className="hireme-label">Email</span>
+                  <a href={`mailto:${profile.email}`} className="hireme-value-link">
+                    {profile.email}
+                  </a>
+                </span>
+              </p>
+
+              <p className="hireme-item">
+                <span className="hireme-item-icon" aria-hidden="true">
+                  ☎
+                </span>
+                <span className="hireme-item-body">
+                  <span className="hireme-label">Phone</span>
+                  <a
+                    href={`tel:${profile.phone.replace(/\s+/g, "")}`}
+                    className="hireme-value-link"
+                  >
+                    {profile.phone}
+                  </a>
+                </span>
+              </p>
+
+              <p className="hireme-item">
+                <span className="hireme-item-icon" aria-hidden="true">
+                  📍
+                </span>
+                <span className="hireme-item-body">
+                  <span className="hireme-label">Location</span>
+                  <span className="hireme-value">{profile.location}</span>
+                </span>
+              </p>
+
+              <div className="hireme-actions">
+                <a
+                  href={profile.linkedinUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hireme-btn hireme-btn-linkedin"
+                >
+                  View LinkedIn Profile
+                </a>
+                <a
+                  href={profile.stackOverflowUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hireme-btn hireme-btn-stackoverflow"
+                >
+                  View Stack Overflow Profile
+                </a>
+              </div>
+
+              <a href={`mailto:${profile.email}`} className="hireme-btn hireme-btn-email">
+                Send Email
               </a>
-            </p>
-            <p>
-              <strong>Stack Overflow:</strong>{" "}
-              <a href={profile.stackOverflowUrl} target="_blank" rel="noreferrer">
-                View Stack Overflow profile
-              </a>
-            </p>
-          </article>
+            </article>
+          </div>
+        </Section>
+
+        <Section id="blog" title="Blog">
+          <div className="blog-list">
+            {blogPosts.map((post, index) => (
+              <article key={post.url} className="blog-item">
+                <div className="blog-item-head">
+                  <span className="blog-row-number">{String(index + 1).padStart(2, "0")}</span>
+                  <h4>{post.title}</h4>
+                </div>
+                <p>{post.description}</p>
+                <a href={post.url} target="_blank" rel="noreferrer">
+                  Read post
+                </a>
+              </article>
+            ))}
+          </div>
         </Section>
       </div>
+
     </main>
   );
 }

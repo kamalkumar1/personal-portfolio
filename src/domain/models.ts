@@ -40,18 +40,20 @@ export interface ExperienceItem {
 
 export interface ProjectItem {
   name: string;
-  stack: string;
   summary: string;
-  impact: string;
+  technologies: string[];
+  appStoreUrl?: string;
+  playStoreUrl?: string;
 }
 
 export interface OpenSourceItem {
   name: string;
-  type: "NuGet" | "GitHub";
+  type: "NuGet" | "GitHub" | "Swift Package";
   description: string;
   link: string;
   stats: string;
   tags: string[];
+  features?: string[];
 }
 
 export interface OpenSourcePlatformGroup {
@@ -71,4 +73,10 @@ export interface SkillGroup {
 export interface CertificationItem {
   name: string;
   issuer: string;
+}
+
+export interface BlogItem {
+  title: string;
+  url: string;
+  description: string;
 }

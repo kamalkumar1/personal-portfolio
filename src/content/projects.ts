@@ -2,27 +2,26 @@ import type { ProjectItem } from "@/domain/models";
 
 export const projectsContent: ProjectItem[] = [
   {
-    name: "MyManpowerApp",
-    stack: ".NET MAUI, Swift, SwiftUI",
+    name: "MyManpower App",
     summary:
       "Mobile platform for associates and job seekers to search and manage career opportunities.",
-    impact:
-      "Reached large-scale adoption with hundreds of thousands of downloads across iOS and Android.",
+    technologies: [".NET MAUI", "Xamarin iOS", "Xamarin Android"],
+    appStoreUrl: "https://apps.apple.com/us/app/my-manpower-job-search/id1569784517",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.mpg.mymanpower&hl=en_IN",
   },
   {
     name: "Sterling VDR",
-    stack: "Xamarin Native, iOS, Android",
     summary:
       "Secure virtual data room application for document sharing in business-critical workflows.",
-    impact:
-      "Implemented enterprise-grade security capabilities including controlled access and compliance-driven process support.",
+    technologies: ["Native iOS", "Xamarin iOS", "Xamarin Android"],
+    appStoreUrl: "https://apps.apple.com/gb/app/sterling-vdr/id1472147164",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.hms.sterling&hl=en_GB",
   },
   {
     name: "LIBRA (Vakil Search)",
-    stack: "Objective-C, Swift, Xcode",
     summary:
       "Case and billing management app for legal professionals and firms.",
-    impact:
-      "Improved user productivity through streamlined legal workflow and intuitive UI experience.",
+    technologies: ["Native iOS"],
+    appStoreUrl: "https://apps.apple.com/in/app/libra-law-practice-management/id1145278921",
   },
 ];

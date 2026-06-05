@@ -13,6 +13,7 @@ export const skillGroupsContent: SkillGroup[] = [
       "SwiftUI",
       "C#",
       ".NET MAUI",
+      "Kotlin Multiplatform (KMP)",
       "Xamarin (Forms & Native)",
       "Java",
     ],

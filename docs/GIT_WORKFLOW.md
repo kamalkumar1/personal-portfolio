@@ -62,8 +62,8 @@ gh pr create --base main --head feature/<short-task-name> --title "Your PR title
 
 ### 6) Verify deployment
 
-- `main` triggers GitHub Actions deploy workflow.
-- Confirm build succeeds and site updates after merge.
+- Run `npm run build` before merge.
+- After merge to `main`, confirm deployment on your hosting provider (Vercel recommended).
 
 ## Release workflow
 

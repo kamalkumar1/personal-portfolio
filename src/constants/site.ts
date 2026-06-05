@@ -4,7 +4,7 @@ export const siteConfig = {
   title: "Kamal Kumar | Mobile Architect",
   description:
     "Senior Mobile Developer and Technical Lead with 11+ years in Native iOS, .NET MAUI, and cross-platform engineering.",
-  siteUrl: "https://personal-portfolio.vercel.app",
+  siteUrl: "https://kamaldev.in",
   author: "Kamal Kumar",
   keywords: [
     "Mobile Developer",

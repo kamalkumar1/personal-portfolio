@@ -6,8 +6,9 @@ Static personal portfolio built with **Next.js (App Router) + TypeScript**, foll
 
 - **Framework:** Next.js 16 (static export)
 - **Language:** TypeScript (strict)
-- **Hosting (recommended):** [Vercel](https://vercel.com) — see [docs/HOSTING.md](docs/HOSTING.md)
-- **Alternative:** Cloudflare Pages
+- **Hosting:** [GitHub Pages](https://pages.github.com) — see [docs/HOSTING.md](docs/HOSTING.md)
+- **Domain:** [kamaldev.in](https://kamaldev.in) (GoDaddy)
+- **Alternative:** Vercel or Cloudflare Pages
 
 ## Architecture
 
@@ -51,7 +52,14 @@ Update metadata in `src/content/profile.ts`.
 
 ## Deploy
 
-### Vercel (recommended)
+### GitHub Pages (primary)
+
+1. Push to `main`
+2. GitHub Actions workflow `.github/workflows/deploy.yml` publishes `out/`
+3. Custom domain `kamaldev.in` is configured via `public/CNAME`
+4. GoDaddy DNS setup: see [docs/HOSTING.md](docs/HOSTING.md)
+
+### Vercel (alternative)
 
 1. Push repo to GitHub
 2. Import project on Vercel

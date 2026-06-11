@@ -1,5 +1,7 @@
 # Personal Portfolio (Next.js Static)
 
+Live site: **[kamaldev.in](https://kamaldev.in)**
+
 Static personal portfolio built with **Next.js (App Router) + TypeScript**, following a SOLID-friendly architecture with separated content modules.
 
 ## Stack
@@ -8,7 +10,8 @@ Static personal portfolio built with **Next.js (App Router) + TypeScript**, foll
 - **Language:** TypeScript (strict)
 - **Hosting:** [GitHub Pages](https://pages.github.com) — see [docs/HOSTING.md](docs/HOSTING.md)
 - **Domain:** [kamaldev.in](https://kamaldev.in) (GoDaddy)
-- **Alternative:** Vercel or Cloudflare Pages
+- **CI/CD:** GitHub Actions (`.github/workflows/deploy.yml`)
+- **Alternative hosting:** Vercel or Cloudflare Pages
 
 ## Architecture
 
@@ -23,15 +26,16 @@ Static personal portfolio built with **Next.js (App Router) + TypeScript**, foll
 
 ## Sections
 
-- About / Hero
-- Core Competencies
+- Hero / About
 - Experience (horizontal timeline)
-- Open Source (platform-wise accordion: Native iOS, .NET MAUI, Kotlin Multiplatform)
-- Projects
-- Technical Skills
+- My Works (projects with App Store / Play Store links)
+- Open Source (grouped showcase with read-more)
+- MySkills (Technical Skills + Core Competencies)
 - Certifications
 - Awards & Achievements
-- Contact (email, phone, LinkedIn, Stack Overflow)
+- Hire Me (contact + availability)
+- Blog (LinkedIn articles)
+- Share portfolio button (floating)
 
 ## Commands
 
@@ -59,6 +63,16 @@ Update metadata in `src/content/profile.ts`.
 3. Custom domain `kamaldev.in` is configured via `public/CNAME`
 4. GoDaddy DNS setup: see [docs/HOSTING.md](docs/HOSTING.md)
 
+**One-time GitHub setup:**
+- Repo → **Settings → Pages**
+- Source: **GitHub Actions**
+- Custom domain: `kamaldev.in`
+- Enable **Enforce HTTPS**
+
+**If deploy fails with `Failed to create deployment (status: 404)`:**
+- Ensure GitHub Pages is enabled in repo settings
+- Re-run the **Deploy Static Site** workflow manually
+
 ### Vercel (alternative)
 
 1. Push repo to GitHub
@@ -73,3 +87,8 @@ Update files under `src/content/` only — no need to change component logic for
 
 - [Hosting guide](docs/HOSTING.md)
 - [Git workflow](docs/GIT_WORKFLOW.md)
+
+## Author
+
+**Kamal Kumar** — Mobile Architect & Senior Mobile Developer  
+Portfolio: [kamaldev.in](https://kamaldev.in)

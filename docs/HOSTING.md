@@ -49,6 +49,24 @@ Remove conflicting old A/CNAME records for `@` or `www` if GoDaddy shows duplica
 
 DNS propagation usually takes 15 minutes to 24 hours.
 
+## Google Analytics (GA4)
+
+1. Create a GA4 property at [analytics.google.com](https://analytics.google.com)
+2. Copy the Measurement ID (`G-XXXXXXXXXX`)
+3. Add a GitHub Actions secret:
+   - Repo → **Settings → Secrets and variables → Actions**
+   - Name: `NEXT_PUBLIC_GA_MEASUREMENT_ID`
+   - Value: your `G-XXXXXXXXXX` ID
+4. Re-run **Deploy Static Site** workflow (or push to `main`)
+
+For local testing, create `.env.local`:
+
+```bash
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+```
+
+Analytics only loads when the measurement ID is set.
+
 ## Local static output
 
 ```bash

@@ -15,6 +15,7 @@ export const siteConfig = {
     "Chennai",
   ],
   ogImagePath: "/images/profile/profile-kamal.png",
+  googleAnalyticsId: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "",
 };
 
 export const navItems: NavItem[] = [

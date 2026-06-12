@@ -24,7 +24,12 @@ export const Header = forwardRef<HTMLElement, HeaderProps>(function Header(
 
   return (
     <header ref={ref} className={headerClass}>
-      <a href="#about" className={isHero ? "hero-logo" : "brand"}>
+      <a
+        href="#about"
+        className={isHero ? "hero-logo" : "brand"}
+        data-analytics-event="nav_logo_clicked"
+        data-analytics-label="Nav: Logo"
+      >
         {isHero ? (
           "KAMAL"
         ) : (
@@ -56,7 +61,13 @@ export const Header = forwardRef<HTMLElement, HeaderProps>(function Header(
       </nav>
 
       {!isHero ? (
-        <a href="#contact" className="nav-cta">
+        <a
+          href="#contact"
+          className="nav-cta"
+          data-analytics-event="hire_me_clicked"
+          data-analytics-label="Nav: Hire Me CTA"
+          data-analytics-id="contact"
+        >
           Hire Me
         </a>
       ) : null}

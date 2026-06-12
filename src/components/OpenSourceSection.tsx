@@ -57,7 +57,13 @@ function ExpandableText({ text, className = "open-source-item-description" }: Ex
         {text}
       </p>
       {hasOverflow ? (
-        <button type="button" className="open-source-more-btn" onClick={() => setExpanded((value) => !value)}>
+        <button
+          type="button"
+          className="open-source-more-btn"
+          onClick={() => setExpanded((value) => !value)}
+          data-analytics-event={expanded ? "opensource_read_less_clicked" : "opensource_read_more_clicked"}
+          data-analytics-label={expanded ? "Open Source: Read less" : "Open Source: Read more"}
+        >
           {expanded ? "Read less" : "Read more"}
         </button>
       ) : null}
@@ -95,6 +101,7 @@ export function OpenSourceSection({ groups }: OpenSourceSectionProps) {
             className="open-source-inline-link"
             data-analytics-id="nuget-profile-kamal15"
             data-analytics-label="Open Source: NuGet profile kamal15"
+            data-analytics-event="opensource_nuget_profile_clicked"
           >
             kamal15 (4 packages, 4,845 total downloads)
           </a>
@@ -120,6 +127,9 @@ export function OpenSourceSection({ groups }: OpenSourceSectionProps) {
                   className={`open-source-accordion-trigger ${isOpen ? "active" : ""}`}
                   onClick={() => setActiveGroupId((currentId) => (currentId === group.id ? "" : group.id))}
                   aria-expanded={isOpen}
+                  data-analytics-event="opensource_group_toggle_clicked"
+                  data-analytics-label={`Open Source: ${group.label}`}
+                  data-analytics-id={group.id}
                 >
                   <span>{group.label}</span>
                   <span className="accordion-icon">{isOpen ? "-" : "+"}</span>

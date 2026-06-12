@@ -34,6 +34,8 @@ export default function Home() {
           className="floating-social-link"
           aria-label="LinkedIn profile"
           title="Click to see LinkedIn profile"
+          data-analytics-event="floating_linkedin_clicked"
+          data-analytics-label="Floating: LinkedIn"
         >
           <img
             className="floating-social-icon-img"
@@ -192,7 +194,12 @@ export default function Home() {
                 </span>
                 <span className="hireme-item-body">
                   <span className="hireme-label">Email</span>
-                  <a href={`mailto:${profile.email}`} className="hireme-value-link">
+                  <a
+                    href={`mailto:${profile.email}`}
+                    className="hireme-value-link"
+                    data-analytics-event="hire_email_clicked"
+                    data-analytics-label="Hire Me: Email"
+                  >
                     {profile.email}
                   </a>
                 </span>
@@ -207,6 +214,8 @@ export default function Home() {
                   <a
                     href={`tel:${profile.phone.replace(/\s+/g, "")}`}
                     className="hireme-value-link"
+                    data-analytics-event="hire_phone_clicked"
+                    data-analytics-label="Hire Me: Phone"
                   >
                     {profile.phone}
                   </a>
@@ -229,6 +238,8 @@ export default function Home() {
                   target="_blank"
                   rel="noreferrer"
                   className="hireme-btn hireme-btn-linkedin"
+                  data-analytics-event="hire_linkedin_clicked"
+                  data-analytics-label="Hire Me: LinkedIn"
                 >
                   View LinkedIn Profile
                 </a>
@@ -237,12 +248,19 @@ export default function Home() {
                   target="_blank"
                   rel="noreferrer"
                   className="hireme-btn hireme-btn-stackoverflow"
+                  data-analytics-event="hire_stackoverflow_clicked"
+                  data-analytics-label="Hire Me: Stack Overflow"
                 >
                   View Stack Overflow Profile
                 </a>
               </div>
 
-              <a href={`mailto:${profile.email}`} className="hireme-btn hireme-btn-email">
+              <a
+                href={`mailto:${profile.email}`}
+                className="hireme-btn hireme-btn-email"
+                data-analytics-event="hire_send_email_clicked"
+                data-analytics-label="Hire Me: Send Email"
+              >
                 Send Email
               </a>
             </article>

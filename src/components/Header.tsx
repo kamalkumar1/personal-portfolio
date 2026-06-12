@@ -9,6 +9,9 @@ interface HeaderProps {
   scrolled?: boolean;
 }
 
+const OVERFLOW_BUTTON_WIDTH = 40;
+const NAV_LIST_HORIZONTAL_PADDING = 24;
+
 function NavLinks({
   items,
   isHero,
@@ -39,6 +42,85 @@ function NavLinks({
   );
 }
 
+function OverflowMenuButton({
+  menuId,
+  menuOpen,
+  linkClassName,
+  onToggle,
+}: {
+  menuId: string;
+  menuOpen: boolean;
+  linkClassName: string;
+  onToggle: () => void;
+}) {
+  return (
+    <li className="nav-overflow-item">
+      <button
+        type="button"
+        id={`${menuId}-trigger`}
+        className={`nav-overflow-toggle ${linkClassName}`}
+        aria-expanded={menuOpen}
+        aria-controls={menuId}
+        aria-haspopup="true"
+        aria-label={menuOpen ? "Close more navigation links" : "Show more navigation links"}
+        data-analytics-event="nav_menu_toggle_clicked"
+        data-analytics-label={menuOpen ? "Nav: Close overflow menu" : "Nav: Open overflow menu"}
+        onClick={onToggle}
+      >
+        <span className="nav-overflow-dots" aria-hidden="true">
+          <span />
+          <span />
+          <span />
+        </span>
+      </button>
+    </li>
+  );
+}
+
+function calculateVisibleItemCount(
+  measureList: HTMLUListElement,
+  availableWidth: number,
+  dotsButtonWidth: number,
+): number {
+  const items = Array.from(measureList.children) as HTMLElement[];
+  if (items.length === 0 || availableWidth <= 0) {
+    return 0;
+  }
+
+  const listStyles = window.getComputedStyle(measureList);
+  const listPadding = parseFloat(listStyles.paddingLeft) + parseFloat(listStyles.paddingRight);
+  const gap = Number.parseFloat(listStyles.gap || "4") || 4;
+  const itemWidths = items.map((item) => item.getBoundingClientRect().width);
+
+  let totalWidth = listPadding;
+  for (let index = 0; index < itemWidths.length; index += 1) {
+    totalWidth += (index > 0 ? gap : 0) + itemWidths[index];
+  }
+
+  if (totalWidth <= availableWidth) {
+    return items.length;
+  }
+
+  let usedWidth = listPadding;
+  let visibleCount = 0;
+
+  for (let index = 0; index < itemWidths.length; index += 1) {
+    const itemGap = visibleCount > 0 ? gap : 0;
+    const remainingAfterThis = itemWidths.length - (visibleCount + 1);
+    const dotsReserve = remainingAfterThis > 0 ? dotsButtonWidth + gap : 0;
+    const nextWidth = usedWidth + itemGap + itemWidths[index] + dotsReserve;
+
+    if (nextWidth <= availableWidth) {
+      usedWidth += itemGap + itemWidths[index];
+      visibleCount += 1;
+    } else {
+      break;
+    }
+  }
+
+  return visibleCount;
+}
+
 export const Header = forwardRef<HTMLElement, HeaderProps>(function Header(
   { variant = "default", scrolled = false },
   ref,
@@ -52,7 +134,7 @@ export const Header = forwardRef<HTMLElement, HeaderProps>(function Header(
   const measureRef = useRef<HTMLUListElement>(null);
 
   const [menuOpen, setMenuOpen] = useState(false);
-  const [useDropdown, setUseDropdown] = useState(false);
+  const [visibleItemCount, setVisibleItemCount] = useState(items.length);
 
   const setHeaderRef = useCallback(
     (node: HTMLElement | null) => {
@@ -70,7 +152,7 @@ export const Header = forwardRef<HTMLElement, HeaderProps>(function Header(
     setMenuOpen(false);
   }, []);
 
-  const updateNavMode = useCallback(() => {
+  const updateVisibleItems = useCallback(() => {
     const header = headerRef.current;
     const measureList = measureRef.current;
     const logo = logoRef.current;
@@ -86,21 +168,24 @@ export const Header = forwardRef<HTMLElement, HeaderProps>(function Header(
     const ctaReserve = isHero ? 0 : 112;
     const gap = 12;
 
-    const navNeededWidth = measureList.scrollWidth;
-    const availableForInlineNav =
-      header.clientWidth - horizontalPadding - logoWidth - gap - ctaReserve;
+    const availableForNav =
+      header.clientWidth - horizontalPadding - logoWidth - gap - ctaReserve - NAV_LIST_HORIZONTAL_PADDING;
 
-    const shouldUseDropdown = navNeededWidth > availableForInlineNav;
+    const nextVisibleCount = calculateVisibleItemCount(
+      measureList,
+      availableForNav,
+      OVERFLOW_BUTTON_WIDTH,
+    );
 
-    setUseDropdown(shouldUseDropdown);
-    if (!shouldUseDropdown) {
+    setVisibleItemCount(nextVisibleCount);
+    if (nextVisibleCount >= items.length) {
       setMenuOpen(false);
     }
-  }, [isHero]);
+  }, [isHero, items.length]);
 
   useLayoutEffect(() => {
-    updateNavMode();
-  }, [items, updateNavMode]);
+    updateVisibleItems();
+  }, [items, updateVisibleItems]);
 
   useEffect(() => {
     const header = headerRef.current;
@@ -108,16 +193,16 @@ export const Header = forwardRef<HTMLElement, HeaderProps>(function Header(
       return;
     }
 
-    const resizeObserver = new ResizeObserver(updateNavMode);
+    const resizeObserver = new ResizeObserver(updateVisibleItems);
     resizeObserver.observe(header);
 
-    window.addEventListener("resize", updateNavMode);
+    window.addEventListener("resize", updateVisibleItems);
 
     return () => {
       resizeObserver.disconnect();
-      window.removeEventListener("resize", updateNavMode);
+      window.removeEventListener("resize", updateVisibleItems);
     };
-  }, [updateNavMode]);
+  }, [updateVisibleItems]);
 
   useEffect(() => {
     if (!menuOpen) {
@@ -147,13 +232,17 @@ export const Header = forwardRef<HTMLElement, HeaderProps>(function Header(
     };
   }, [closeMenu, menuOpen]);
 
+  const hasOverflow = visibleItemCount < items.length;
+  const inlineItems = hasOverflow ? items.slice(0, visibleItemCount) : items;
+  const overflowItems = hasOverflow ? items.slice(visibleItemCount) : [];
+
   const headerClass = [
     "header",
     "header-sticky",
     isHero ? "header-hero" : "",
     isHero && scrolled ? "header-scrolled" : "",
-    useDropdown ? "is-nav-dropdown" : "",
-    useDropdown && menuOpen ? "is-nav-menu-open" : "",
+    hasOverflow ? "has-nav-overflow" : "",
+    menuOpen ? "is-nav-menu-open" : "",
   ]
     .filter(Boolean)
     .join(" ");
@@ -184,31 +273,21 @@ export const Header = forwardRef<HTMLElement, HeaderProps>(function Header(
         )}
       </a>
 
-      {useDropdown ? (
-        <button
-          type="button"
-          className="nav-menu-toggle"
-          aria-expanded={menuOpen}
-          aria-controls={menuId}
-          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-          data-analytics-event="nav_menu_toggle_clicked"
-          data-analytics-label={menuOpen ? "Nav: Close menu" : "Nav: Open menu"}
-          onClick={() => setMenuOpen((open) => !open)}
-        >
-          <span className="nav-menu-toggle-icon" aria-hidden="true">
-            {menuOpen ? "✕" : "☰"}
-          </span>
-          <span className="nav-menu-toggle-text">{menuOpen ? "Close" : "Menu"}</span>
-        </button>
-      ) : null}
-
       <nav className="nav-inline" aria-label="Primary">
         <ul className={listClassName}>
-          <NavLinks items={items} isHero={isHero} linkClassName={linkClassName} />
+          <NavLinks items={inlineItems} isHero={isHero} linkClassName={linkClassName} />
+          {hasOverflow ? (
+            <OverflowMenuButton
+              menuId={menuId}
+              menuOpen={menuOpen}
+              linkClassName={linkClassName}
+              onToggle={() => setMenuOpen((open) => !open)}
+            />
+          ) : null}
         </ul>
       </nav>
 
-      {!isHero && !useDropdown ? (
+      {!isHero && !hasOverflow ? (
         <a
           href="#contact"
           className="nav-cta"
@@ -220,11 +299,11 @@ export const Header = forwardRef<HTMLElement, HeaderProps>(function Header(
         </a>
       ) : null}
 
-      {useDropdown && menuOpen ? (
-        <nav id={menuId} className="nav-dropdown" aria-label="Primary mobile">
+      {hasOverflow && menuOpen ? (
+        <nav id={menuId} className="nav-dropdown" aria-label="More navigation links">
           <ul className="nav-dropdown-list">
             <NavLinks
-              items={items}
+              items={overflowItems}
               isHero={isHero}
               linkClassName={`${linkClassName} nav-dropdown-link`}
               onNavigate={closeMenu}

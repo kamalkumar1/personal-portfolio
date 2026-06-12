@@ -120,6 +120,7 @@ a:hover {
 }
 
 .header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -380,56 +381,58 @@ a:hover {
   min-width: 0;
 }
 
-.nav-menu-toggle {
-  display: none;
+.nav-overflow-item {
+  list-style: none;
+}
+
+.nav-overflow-toggle {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  margin-left: auto;
-  padding: 8px 12px;
-  border: 1px solid rgba(147, 197, 253, 0.45);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.96);
-  color: #1f2937;
-  font-size: 0.82rem;
-  font-weight: 700;
-  line-height: 1;
+  min-width: 36px;
+  min-height: 36px;
+  padding: 8px 10px;
+  border: none;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
-.nav-menu-toggle:hover {
+.nav-overflow-dots {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  width: 14px;
+}
+
+.nav-overflow-dots span {
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.nav-overflow-toggle[aria-expanded="true"] {
   color: #0f5fd6;
-  border-color: rgba(59, 130, 246, 0.45);
-  background: rgba(239, 246, 255, 0.98);
+  background: rgba(59, 130, 246, 0.12);
 }
 
-.nav-menu-toggle-icon {
-  font-size: 1rem;
-  line-height: 1;
-}
-
-.header.is-nav-dropdown {
-  flex-wrap: wrap;
-}
-
-.header.is-nav-dropdown .nav-menu-toggle {
-  display: inline-flex;
-}
-
-.header.is-nav-dropdown .nav-inline {
+.header.has-nav-overflow .nav-cta {
   display: none;
 }
 
-.header.is-nav-dropdown .nav-cta {
-  display: none;
+.header.has-nav-overflow .nav-list-hero,
+.header.has-nav-overflow .nav-list {
+  flex-wrap: nowrap;
 }
 
 .nav-dropdown {
-  flex: 1 1 100%;
-  width: 100%;
-  margin-top: 4px;
+  position: absolute;
+  top: calc(100% - 4px);
+  right: clamp(12px, 4vw, 48px);
+  z-index: 60;
+  min-width: min(280px, calc(100vw - 24px));
 }
 
 .nav-dropdown-list {
@@ -486,10 +489,6 @@ a:hover {
   flex-wrap: nowrap;
   width: max-content;
   max-width: none;
-}
-
-.header-hero.is-nav-dropdown .nav-menu-toggle {
-  background: rgba(255, 255, 255, 0.96);
 }
 
 .header-hero.is-nav-menu-open {

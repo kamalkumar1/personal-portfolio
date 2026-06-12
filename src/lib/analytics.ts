@@ -2,6 +2,9 @@ const GA_MEASUREMENT_ID = "G-718N7ZFDX2";
 
 type ClickType = "navigation" | "outbound" | "contact" | "action";
 type ActivityType = "click" | "section_view" | "scroll";
+type DeviceViewType = "mobile" | "browser";
+
+const MOBILE_MAX_WIDTH = 860;
 
 interface TrackClickParams {
   label: string;
@@ -117,6 +120,30 @@ export function trackSectionView(sectionId: string, sectionTitle: string) {
 export function trackScrollDepth(percent: number) {
   trackActivity(`scroll_${percent}_percent`, "scroll", {
     scroll_percent: percent,
+  });
+}
+
+export function getDeviceViewType(viewportWidth = typeof window !== "undefined" ? window.innerWidth : 0): DeviceViewType {
+  return viewportWidth <= MOBILE_MAX_WIDTH ? "mobile" : "browser";
+}
+
+export function trackDeviceView() {
+  if (typeof window === "undefined") return;
+
+  const viewportWidth = window.innerWidth;
+  const deviceView = getDeviceViewType(viewportWidth);
+  const eventName = deviceView === "mobile" ? "portfolio_view_mobile" : "portfolio_view_browser";
+
+  invokeGtag("set", "user_properties", {
+    device_view: deviceView,
+    viewport_width: viewportWidth,
+  });
+
+  sendGaEvent(eventName, {
+    activity_type: "lifecycle",
+    device_view: deviceView,
+    viewport_width: viewportWidth,
+    page_path: window.location.pathname,
   });
 }
 

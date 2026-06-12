@@ -82,6 +82,8 @@ export default function Home() {
                         target="_blank"
                         rel="noreferrer"
                         className="project-store-btn"
+                        data-analytics-id={`${project.name}-app-store`}
+                        data-analytics-label={`${project.name}: App Store`}
                       >
                         App Store
                       </a>
@@ -92,6 +94,8 @@ export default function Home() {
                         target="_blank"
                         rel="noreferrer"
                         className="project-store-btn"
+                        data-analytics-id={`${project.name}-play-store`}
+                        data-analytics-label={`${project.name}: Play Store`}
                       >
                         Play Store
                       </a>
@@ -254,7 +258,13 @@ export default function Home() {
                   <h4>{post.title}</h4>
                 </div>
                 <p>{post.description}</p>
-                <a href={post.url} target="_blank" rel="noreferrer">
+                <a
+                  href={post.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  data-analytics-id={post.title}
+                  data-analytics-label={`Blog: ${post.title}`}
+                >
                   Read post
                 </a>
               </article>

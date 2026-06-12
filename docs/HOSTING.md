@@ -54,12 +54,19 @@ DNS propagation usually takes 15 minutes to 24 hours.
 Measurement ID is configured in `src/constants/site.ts`:
 
 ```ts
-googleAnalyticsId: "G-718N7ZFDX2"
+googleAnalyticsId: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-718N7ZFDX2"
 ```
 
 After deploy, verify traffic in GA4 → **Reports → Realtime**.
 
-Optional: override via `NEXT_PUBLIC_GA_MEASUREMENT_ID` in `.env.local` or GitHub Actions secrets.
+Optional: override via `NEXT_PUBLIC_GA_MEASUREMENT_ID` in `.env.local` for local testing.
+
+### Troubleshooting (no data in GA)
+
+1. Open `https://kamaldev.in` in a normal browser window (disable ad blockers).
+2. In DevTools → Network, confirm requests to `google-analytics.com` or `googletagmanager.com`.
+3. In GA4, open **Reports → Realtime** (not only standard Reports; new properties can take 24–48 hours for full reports).
+4. For custom clicks, check event name **`site_click`** under **Reports → Engagement → Events**.
 
 ### Click tracking
 

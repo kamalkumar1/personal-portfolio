@@ -54,19 +54,22 @@ DNS propagation usually takes 15 minutes to 24 hours.
 Measurement ID is configured in `src/constants/site.ts`:
 
 ```ts
-googleAnalyticsId: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-718N7ZFDX2"
+googleAnalyticsId: "G-718N7ZFDX2"
 ```
 
 After deploy, verify traffic in GA4 → **Reports → Realtime**.
 
-Optional: override via `NEXT_PUBLIC_GA_MEASUREMENT_ID` in `.env.local` for local testing.
-
 ### Troubleshooting (no data in GA)
 
 1. Open `https://kamaldev.in` in a normal browser window (disable ad blockers).
-2. In DevTools → Network, confirm requests to `google-analytics.com` or `googletagmanager.com`.
-3. In GA4, open **Reports → Realtime** (not only standard Reports; new properties can take 24–48 hours for full reports).
-4. For activity events, check **Reports → Engagement → Events**. Examples:
+2. In DevTools → Network, filter for `collect` and confirm requests after clicks.
+3. In GA4, open **Reports → Realtime** → scroll to **Event count by Event name**.
+4. Automatic events (`page_view`, `session_start`, `first_visit`) appear on load. Custom events appear only after interaction (click, scroll, section view).
+5. Look for these custom events after using the site:
+   - `portfolio_ready` (fires once when page loads)
+   - `portfolio_interaction` (fires on every click)
+   - `nav_home_clicked`, `nav_myskill_clicked`, `hire_me_clicked`, etc.
+6. For activity events in standard reports, check **Reports → Engagement → Events**. Examples:
    - `nav_home_clicked`, `nav_myskill_clicked`, `nav_hire_me_clicked`
    - `hire_send_email_clicked`, `hire_linkedin_clicked`
    - `section_viewed` (with `section_name` parameter)

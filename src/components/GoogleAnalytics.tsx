@@ -1,7 +1,7 @@
 import Script from "next/script";
-import { siteConfig } from "@/constants/site";
+import { getGaMeasurementId } from "@/lib/analytics";
 
-const gaId = siteConfig.googleAnalyticsId;
+const gaId = getGaMeasurementId();
 
 export function GoogleAnalytics() {
   if (!gaId) return null;
@@ -20,6 +20,9 @@ export function GoogleAnalytics() {
           gtag('js', new Date());
           gtag('config', '${gaId}', {
             page_path: window.location.pathname,
+            send_page_view: true,
+            cookie_domain: 'auto',
+            cookie_flags: 'SameSite=None;Secure',
           });
         `}
       </Script>

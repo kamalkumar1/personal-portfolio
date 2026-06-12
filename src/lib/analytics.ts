@@ -1,4 +1,4 @@
-import { siteConfig } from "@/constants/site";
+const GA_MEASUREMENT_ID = "G-718N7ZFDX2";
 
 type ClickType = "navigation" | "outbound" | "contact" | "action";
 type ActivityType = "click" | "section_view" | "scroll";
@@ -16,10 +16,15 @@ interface TrackClickParams {
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
+    dataLayer?: unknown[];
   }
 }
 
 const GA_EVENT_NAME_PATTERN = /^[a-z][a-z0-9_]{0,39}$/;
+
+export function getGaMeasurementId(): string {
+  return GA_MEASUREMENT_ID;
+}
 
 export function toGaEventName(value: string): string {
   const normalized = value
@@ -33,15 +38,31 @@ export function toGaEventName(value: string): string {
   return GA_EVENT_NAME_PATTERN.test(eventName) ? eventName : "element_clicked";
 }
 
-function canTrack(): boolean {
-  return Boolean(siteConfig.googleAnalyticsId && typeof window !== "undefined" && window.gtag);
+function pushToDataLayer(...args: unknown[]) {
+  if (typeof window === "undefined") return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(args);
+}
+
+function invokeGtag(...args: unknown[]) {
+  if (typeof window === "undefined") return;
+
+  if (typeof window.gtag === "function") {
+    window.gtag(...args);
+    return;
+  }
+
+  pushToDataLayer(...args);
 }
 
 export function sendGaEvent(eventName: string, params: Record<string, string | number | boolean> = {}) {
-  if (!canTrack()) return;
+  if (typeof window === "undefined") return;
 
-  window.gtag!("event", toGaEventName(eventName), {
+  const normalizedName = toGaEventName(eventName);
+
+  invokeGtag("event", normalizedName, {
     ...params,
+    send_to: GA_MEASUREMENT_ID,
     activity_type: params.activity_type ?? "interaction",
   });
 }
@@ -76,6 +97,13 @@ export function trackClick({
     link_url: url,
     element_type: elementType,
     click_type: clickType,
+  });
+
+  sendGaEvent("portfolio_interaction", {
+    activity_type: "click",
+    interaction_name: resolvedEventName,
+    section,
+    link_text: label,
   });
 }
 

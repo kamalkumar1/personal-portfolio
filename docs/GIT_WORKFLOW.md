@@ -58,9 +58,11 @@ gh pr create --base main --head feature/<short-task-name> --title "Your PR title
 **Rule: no direct changes to `main`.**
 
 1. Open PR from `feature/*` or `hotfix/*` into `main`.
-2. Wait for review/approval.
-3. Merge only after PR is approved.
+2. Review the PR in **Files changed**.
+3. Merge only after you confirm the changes are correct.
 4. Production deploy happens only after merge to `main`.
+
+**Solo maintainer note:** GitHub does not allow self-approval on your own PR. For this repo, review + merge through PR is the approval step (no separate Approve button required).
 
 Merge settings:
 
@@ -157,7 +159,7 @@ In GitHub repo settings:
 ### `main` branch protection (enabled)
 
 - Require a pull request before merging
-- Require at least **1 approving review** before merge
+- Require PR before merge (solo maintainer reviews manually, then merges)
 - Dismiss stale approvals when new commits are pushed
 - Do not allow force pushes
 - Do not allow branch deletion
@@ -167,7 +169,7 @@ In GitHub repo settings:
 - [ ] `npm run build` passes locally or in CI
 - [ ] PR description includes summary and test plan
 - [ ] Changes are scoped to one task
-- [ ] Reviewer approved the PR
+- [ ] PR reviewed in **Files changed** (solo maintainer self-review)
 - [ ] Merge to `main` (production deploy starts automatically)
 
 ## Current repository baseline

@@ -630,6 +630,20 @@ a:hover {
   flex: 1 1 auto;
   min-width: 0;
   overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 10px,
+    #000 calc(100% - 10px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 10px,
+    #000 calc(100% - 10px),
+    transparent 100%
+  );
 }
 
 .hero-ticker-track {
@@ -761,6 +775,16 @@ a:hover {
   border: 0;
 }
 
+.hero-orbit-shell {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+}
+
 .hero-orbit-wrap {
   --orbit-size: min(380px, 78vw);
   --orbit-radius: calc(var(--orbit-size) * 0.38);
@@ -769,6 +793,7 @@ a:hover {
   width: var(--orbit-size);
   height: var(--orbit-size);
   margin: 0 auto;
+  flex: 0 0 auto;
 }
 
 .hero-orbit-glow {
@@ -2214,14 +2239,21 @@ a:hover {
 
   .hero-banner {
     min-height: 100dvh;
+    align-items: stretch;
+    justify-content: flex-start;
+    overflow-x: hidden;
   }
 
   .hero-banner-inner {
-    grid-template-columns: 1fr;
-    padding: 52px 16px 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    padding: 8px 16px 130px;
+    padding-top: calc(var(--header-sticky-height, 44px) + 6px);
     padding-left: max(16px, env(safe-area-inset-left));
     padding-right: max(16px, env(safe-area-inset-right));
-    gap: 20px;
+    gap: 16px;
   }
 
   .hero-visual-stack {
@@ -2231,8 +2263,11 @@ a:hover {
   }
 
   .hero-typewriter-top {
+    order: 0;
     width: 100%;
-    margin-bottom: 10px;
+    max-width: none;
+    margin: 0 0 8px;
+    align-self: stretch;
   }
 
   .hero-typewriter-top .hero-typewriter {
@@ -2240,8 +2275,10 @@ a:hover {
   }
 
   .hero-banner-copy {
+    order: 1;
     max-width: 100%;
-    grid-column: 1;
+    grid-column: auto;
+    min-width: 0;
   }
 
   .hero-typewriter {
@@ -2253,6 +2290,8 @@ a:hover {
 
   .hero-typewriter-prefix {
     line-height: 1.3;
+    font-size: 0.8rem;
+    opacity: 0.92;
   }
 
   .hero-ticker {
@@ -2267,15 +2306,30 @@ a:hover {
   .hero-banner-subtitle {
     font-size: 0.95rem;
     line-height: 1.55;
+    overflow-wrap: anywhere;
   }
 
   .hero-availability {
     font-size: 0.74rem;
     line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
+  .hero-orbit-shell {
+    order: 2;
+    grid-column: auto;
+    grid-row: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 0 0;
+    margin: 0 auto;
   }
 
   .hero-orbit-wrap {
-    --orbit-size: min(320px, 88vw);
+    --orbit-size: min(260px, 70vw);
+    margin: 0 auto;
   }
 
   .hero-scroll {
@@ -2503,13 +2557,17 @@ a:hover {
   }
 
   .hero-banner-inner {
-    padding-top: 48px;
+    padding-top: calc(var(--header-sticky-height, 40px) + 4px);
     padding-bottom: 112px;
-    gap: 16px;
+    gap: 14px;
   }
 
   .hero-typewriter-top .hero-typewriter {
     font-size: 0.78rem;
+  }
+
+  .hero-typewriter-prefix {
+    font-size: 0.74rem;
   }
 
   .hero-banner-title {
@@ -2517,7 +2575,7 @@ a:hover {
   }
 
   .hero-orbit-wrap {
-    --orbit-size: min(270px, 92vw);
+    --orbit-size: min(250px, 72vw);
   }
 
   .hero-orbit-item {

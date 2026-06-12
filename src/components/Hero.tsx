@@ -32,7 +32,9 @@ export function Hero({ profile }: HeroProps) {
             Open to Full-Time | Remote Opportunities | Mobile App Training | Part-Time Consulting
           </p>
         </div>
-        <HeroMobileVisuals profile={profile} />
+        <div className="hero-orbit-shell">
+          <HeroMobileVisuals profile={profile} />
+        </div>
       </div>
 
       <a

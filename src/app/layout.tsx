@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope, Sora } from "next/font/google";
+import { AnalyticsClickTracker } from "@/components/AnalyticsClickTracker";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { siteConfig } from "@/constants/site";
 import "./globals.css";
@@ -53,6 +54,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${headingFont.variable} ${bodyFont.variable}`}>
         <GoogleAnalytics />
+        <AnalyticsClickTracker />
         {children}
       </body>
     </html>

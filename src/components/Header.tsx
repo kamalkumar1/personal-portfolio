@@ -42,7 +42,12 @@ export const Header = forwardRef<HTMLElement, HeaderProps>(function Header(
         <ul className={isHero ? "nav-list-hero" : "nav-list"}>
           {items.map((item) => (
             <li key={item.id}>
-              <a href={item.href} className={`nav-link ${isHero ? "nav-link-hero" : ""}`}>
+              <a
+                href={item.href}
+                className={`nav-link ${isHero ? "nav-link-hero" : ""}`}
+                data-analytics-id={item.id}
+                data-analytics-label={`Nav: ${item.label}`}
+              >
                 {isHero ? item.label.toUpperCase() : item.label}
               </a>
             </li>

@@ -93,6 +93,8 @@ export function OpenSourceSection({ groups }: OpenSourceSectionProps) {
             target="_blank"
             rel="noreferrer"
             className="open-source-inline-link"
+            data-analytics-id="nuget-profile-kamal15"
+            data-analytics-label="Open Source: NuGet profile kamal15"
           >
             kamal15 (4 packages, 4,845 total downloads)
           </a>
@@ -170,7 +172,14 @@ export function OpenSourceSection({ groups }: OpenSourceSectionProps) {
                             />
                           ) : null}
 
-                          <a href={item.link} target="_blank" rel="noreferrer" className="open-source-link-btn">
+                          <a
+                            href={item.link}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="open-source-link-btn"
+                            data-analytics-id={item.name}
+                            data-analytics-label={`Open Source: ${item.name}`}
+                          >
                             View Package
                           </a>
                         </article>

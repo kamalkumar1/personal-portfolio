@@ -67,6 +67,19 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 
 Analytics only loads when the measurement ID is set.
 
+### Click tracking
+
+All link and button clicks are tracked as GA4 event `site_click` with:
+
+- `section` — page section (`experience`, `projects`, `blog`, `header`, etc.)
+- `link_text` — visible label or `aria-label`
+- `item_id` — item identifier (project name, blog title, nav id)
+- `link_url` — destination URL when available
+- `element_type` — `link` or `button`
+- `click_type` — `navigation`, `outbound`, `contact`, or `action`
+
+View events in GA4 → **Reports → Engagement → Events** → `site_click`.
+
 ## Local static output
 
 ```bash

@@ -176,7 +176,7 @@ a:hover {
   white-space: nowrap;
 }
 
-.header-hero nav {
+.header-hero .nav-inline {
   flex: 1 1 auto;
   min-width: 0;
   margin-left: auto;
@@ -185,7 +185,7 @@ a:hover {
 
 /* Safari fallback: keep hero nav as a styled horizontal pill
    even if class-specific rules are cached or not applied. */
-.header-hero nav ul {
+.header-hero .nav-inline ul {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -201,12 +201,12 @@ a:hover {
   border-radius: 999px;
 }
 
-.header-hero nav ul > li {
+.header-hero .nav-inline ul > li {
   list-style: none;
   list-style-type: none;
 }
 
-.header-hero nav ul > li > a {
+.header-hero .nav-inline ul > li > a {
   white-space: nowrap;
 }
 
@@ -373,6 +373,135 @@ a:hover {
   transform: translateY(-1px);
   box-shadow: 0 14px 24px rgba(37, 99, 235, 0.3);
   text-decoration: none;
+}
+
+.nav-inline {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.nav-menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-left: auto;
+  padding: 8px 12px;
+  border: 1px solid rgba(147, 197, 253, 0.45);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.96);
+  color: #1f2937;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-menu-toggle:hover {
+  color: #0f5fd6;
+  border-color: rgba(59, 130, 246, 0.45);
+  background: rgba(239, 246, 255, 0.98);
+}
+
+.nav-menu-toggle-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.header.is-nav-dropdown {
+  flex-wrap: wrap;
+}
+
+.header.is-nav-dropdown .nav-menu-toggle {
+  display: inline-flex;
+}
+
+.header.is-nav-dropdown .nav-inline {
+  display: none;
+}
+
+.header.is-nav-dropdown .nav-cta {
+  display: none;
+}
+
+.nav-dropdown {
+  flex: 1 1 100%;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.nav-dropdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+  border: 1px solid rgba(147, 197, 253, 0.45);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.14);
+}
+
+.nav-dropdown-list > li {
+  list-style: none;
+}
+
+.nav-dropdown-link {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  padding: 12px 14px;
+  border-radius: 12px;
+  white-space: normal;
+  text-align: left;
+}
+
+.nav-dropdown-link:hover {
+  transform: none;
+}
+
+.nav-dropdown-cta-item {
+  margin-top: 4px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(147, 197, 253, 0.35);
+}
+
+.nav-dropdown-cta {
+  width: 100%;
+}
+
+.nav-measure {
+  position: absolute;
+  visibility: hidden;
+  pointer-events: none;
+  height: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.nav-measure-list {
+  flex-wrap: nowrap;
+  width: max-content;
+  max-width: none;
+}
+
+.header-hero.is-nav-dropdown .nav-menu-toggle {
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.header-hero.is-nav-menu-open {
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid rgba(147, 197, 253, 0.45);
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.12);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+.header-hero.is-nav-menu-open .hero-logo {
+  color: #0f172a;
 }
 
 .hero-banner {
@@ -1984,17 +2113,9 @@ a:hover {
 }
 
 @media (min-width: 861px) {
-  .header-hero nav {
+  .header-hero .nav-inline {
     flex: 0 1 auto;
     max-width: calc(100% - 7.5rem);
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-
-  .header-hero nav::-webkit-scrollbar {
-    display: none;
   }
 
   .nav-list-hero {
@@ -2039,39 +2160,12 @@ a:hover {
     padding: max(10px, env(safe-area-inset-top)) 12px 10px;
   }
 
-  .header-hero nav {
-    flex: 1 1 auto;
-    min-width: 0;
-    margin-left: 0;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-
-  .header-hero nav::-webkit-scrollbar {
-    display: none;
+  .header-hero .nav-inline {
+    margin-left: auto;
   }
 
   .nav-list {
     flex-wrap: wrap;
-  }
-
-  .nav-list-hero {
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    margin-left: 0;
-    width: max-content;
-    max-width: none;
-    gap: 4px;
-    padding: 5px 8px;
-  }
-
-  .nav-list-hero .nav-link-hero {
-    font-size: 0.62rem;
-    letter-spacing: 0.08em;
-    white-space: nowrap;
-    padding: 7px 10px;
   }
 
   .hero-logo {
@@ -2352,17 +2446,6 @@ a:hover {
 
   .hero-logo {
     font-size: 1.1rem;
-  }
-
-  .nav-list-hero {
-    gap: 4px;
-    padding: 4px 6px;
-  }
-
-  .nav-list-hero .nav-link-hero {
-    font-size: 0.56rem;
-    letter-spacing: 0.06em;
-    padding: 6px 7px;
   }
 
   .hero-banner-inner {

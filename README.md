@@ -86,7 +86,7 @@ Update files under `src/content/` only — no need to change component logic for
 ## Documentation
 
 - [Hosting guide](docs/HOSTING.md)
-- [Git workflow](docs/GIT_WORKFLOW.md)
+- [Git workflow](docs/GIT_WORKFLOW.md) — feature branch → PR → approval → merge to `main`
 
 ## Author
 

@@ -53,11 +53,20 @@ git push -u origin feature/<short-task-name>
 gh pr create --base main --head feature/<short-task-name> --title "Your PR title" --body "Summary + test plan"
 ```
 
-### 5) Merge policy
+### 5) Pull request review and merge policy
 
-- Merge only through PR into `main`.
+**Rule: no direct changes to `main`.**
+
+1. Open PR from `feature/*` or `hotfix/*` into `main`.
+2. Wait for review/approval.
+3. Merge only after PR is approved.
+4. Production deploy happens only after merge to `main`.
+
+Merge settings:
+
 - Prefer **Squash and merge** for feature branches.
 - Do not push directly to `main`.
+- Do not self-merge without review when approval is required.
 - Delete feature branch after merge.
 
 ### 6) Verify deployment
@@ -145,12 +154,21 @@ In GitHub repo settings:
 4. **Allow rebase merging:** optional
 5. **Automatically delete head branches:** enabled
 
-### `main` branch protection (recommended)
+### `main` branch protection (enabled)
 
 - Require a pull request before merging
-- Require status checks to pass (`npm run build` via CI)
+- Require at least **1 approving review** before merge
+- Dismiss stale approvals when new commits are pushed
 - Do not allow force pushes
 - Do not allow branch deletion
+
+### PR approval checklist (before merge)
+
+- [ ] `npm run build` passes locally or in CI
+- [ ] PR description includes summary and test plan
+- [ ] Changes are scoped to one task
+- [ ] Reviewer approved the PR
+- [ ] Merge to `main` (production deploy starts automatically)
 
 ## Current repository baseline
 
@@ -196,11 +214,13 @@ git push origin --delete feature/my-change
 - Use descriptive branch names
 - Keep PRs small and focused
 - Run `npm run build` before opening PR
+- Open PR and wait for approval before merging to `main`
 - Tag every production release
 
 ### Don't
 
 - Commit directly to `main`
+- Merge to `main` without an approved PR
 - Keep stale merged branches
 - Use vague branch names (`template1`, `test`, `new`)
 - Force-push `main`

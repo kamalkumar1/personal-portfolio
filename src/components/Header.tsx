@@ -9,8 +9,8 @@ interface HeaderProps {
   scrolled?: boolean;
 }
 
-const OVERFLOW_BUTTON_WIDTH = 40;
-const NAV_LIST_HORIZONTAL_PADDING = 24;
+const OVERFLOW_BUTTON_WIDTH = 28;
+const NAV_LIST_HORIZONTAL_PADDING = 12;
 
 function NavLinks({
   items,

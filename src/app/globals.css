@@ -2151,16 +2151,51 @@ a:hover {
   }
 
   .header-hero {
-    padding: max(12px, env(safe-area-inset-top)) 12px 10px;
-    gap: 10px;
+    padding: max(6px, env(safe-area-inset-top)) 10px 6px;
+    gap: 8px;
   }
 
   .header-hero.header-scrolled {
-    padding: max(10px, env(safe-area-inset-top)) 12px 10px;
+    padding: max(5px, env(safe-area-inset-top)) 10px 5px;
   }
 
   .header-hero .nav-inline {
+    flex: 0 1 auto;
     margin-left: auto;
+  }
+
+  .header-hero .nav-inline ul,
+  .nav-list-hero {
+    width: max-content;
+    max-width: calc(100vw - 7.5rem);
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 2px;
+    padding: 2px 4px 2px 4px;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.14);
+  }
+
+  .nav-list-hero .nav-link-hero,
+  .header-hero .nav-inline ul > li > a.nav-link-hero {
+    padding: 4px 7px;
+    font-size: 0.58rem;
+    letter-spacing: 0.05em;
+  }
+
+  .nav-overflow-toggle {
+    min-width: 24px;
+    min-height: 24px;
+    padding: 4px 5px;
+  }
+
+  .nav-overflow-dots {
+    gap: 2px;
+    width: 10px;
+  }
+
+  .nav-overflow-dots span {
+    width: 3px;
+    height: 3px;
   }
 
   .nav-list {
@@ -2168,7 +2203,7 @@ a:hover {
   }
 
   .hero-logo {
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
 
   .nav-cta {
@@ -2181,7 +2216,7 @@ a:hover {
 
   .hero-banner-inner {
     grid-template-columns: 1fr;
-    padding: 108px 16px 130px;
+    padding: 72px 16px 130px;
     padding-left: max(16px, env(safe-area-inset-left));
     padding-right: max(16px, env(safe-area-inset-right));
     gap: 28px;
@@ -2444,11 +2479,17 @@ a:hover {
   }
 
   .hero-logo {
-    font-size: 1.1rem;
+    font-size: 0.92rem;
+  }
+
+  .nav-list-hero .nav-link-hero,
+  .header-hero .nav-inline ul > li > a.nav-link-hero {
+    padding: 3px 6px;
+    font-size: 0.54rem;
   }
 
   .hero-banner-inner {
-    padding-top: 96px;
+    padding-top: 64px;
     padding-bottom: 112px;
   }
 

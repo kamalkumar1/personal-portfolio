@@ -57,6 +57,8 @@ export function ExperienceTimeline({ experiences }: ExperienceTimelineProps) {
           className={`timeline-nav-btn ${isTimelineReady && canScrollLeft ? "" : "is-hidden"}`}
           onClick={() => scrollTimeline("left")}
           aria-label="Scroll experience timeline left"
+          data-analytics-event="timeline_scroll_left_clicked"
+          data-analytics-label="Experience: Scroll left"
           aria-hidden={!(isTimelineReady && canScrollLeft)}
           tabIndex={isTimelineReady && canScrollLeft ? 0 : -1}
         >
@@ -88,6 +90,8 @@ export function ExperienceTimeline({ experiences }: ExperienceTimelineProps) {
           className={`timeline-nav-btn ${isTimelineReady && canScrollRight ? "" : "is-hidden"}`}
           onClick={() => scrollTimeline("right")}
           aria-label="Scroll experience timeline right"
+          data-analytics-event="timeline_scroll_right_clicked"
+          data-analytics-label="Experience: Scroll right"
           aria-hidden={!(isTimelineReady && canScrollRight)}
           tabIndex={isTimelineReady && canScrollRight ? 0 : -1}
         >

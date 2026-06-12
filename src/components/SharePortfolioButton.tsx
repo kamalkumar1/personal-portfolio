@@ -57,6 +57,8 @@ export function SharePortfolioButton({ compact = false }: SharePortfolioButtonPr
       onClick={handleShare}
       aria-label="Share portfolio"
       title="Share portfolio"
+      data-analytics-event="share_portfolio_clicked"
+      data-analytics-label="Share portfolio"
     >
       {compact ? (
         <span aria-hidden="true">⤴</span>

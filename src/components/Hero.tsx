@@ -35,7 +35,13 @@ export function Hero({ profile }: HeroProps) {
         <HeroMobileVisuals profile={profile} />
       </div>
 
-      <a href="#experience" className="hero-scroll" aria-label="Scroll to content">
+      <a
+        href="#experience"
+        className="hero-scroll"
+        aria-label="Scroll to content"
+        data-analytics-event="hero_scroll_clicked"
+        data-analytics-label="Hero: Scroll to content"
+      >
         <span className="hero-scroll-icon" aria-hidden="true">
           ⌄
         </span>

@@ -66,7 +66,11 @@ Optional: override via `NEXT_PUBLIC_GA_MEASUREMENT_ID` in `.env.local` for local
 1. Open `https://kamaldev.in` in a normal browser window (disable ad blockers).
 2. In DevTools → Network, confirm requests to `google-analytics.com` or `googletagmanager.com`.
 3. In GA4, open **Reports → Realtime** (not only standard Reports; new properties can take 24–48 hours for full reports).
-4. For custom clicks, check event name **`site_click`** under **Reports → Engagement → Events**.
+4. For activity events, check **Reports → Engagement → Events**. Examples:
+   - `nav_home_clicked`, `nav_myskill_clicked`, `nav_hire_me_clicked`
+   - `hire_send_email_clicked`, `hire_linkedin_clicked`
+   - `section_viewed` (with `section_name` parameter)
+   - `scroll_25_percent`, `scroll_50_percent`, `scroll_75_percent`, `scroll_100_percent`
 
 ### Click tracking
 
